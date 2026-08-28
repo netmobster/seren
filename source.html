@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&family=IBM+Plex+Serif:wght@300;700&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="alternate" type="text/plain" href="llms.txt" title="Seren AI - full URL map for AI assistants">
   <link rel="stylesheet" href="seren.css">
 </head>
 <body>
@@ -162,6 +163,7 @@
       <div class="pt-batch" style="margin-top:34px">
         <div class="label-wide">Verify it yourself &mdash; about two minutes</div>
         <p class="text-4" style="margin-top:12px">Download the validator and the session&rsquo;s files and check the arithmetic without taking anyone&rsquo;s word for it. Python 3, no dependencies.</p>
+        <p class="text-4" style="margin-top:12px"><b>If you are pointing an AI assistant at this site</b>, give it <a href="llms.txt" class="dust">/seren/llms.txt</a> &mdash; a plain-text map with a direct URL for every page, every evidence file and every source file on this page. Several assistants can fetch a URL handed to them but will not follow links they find, and then report the rest of the site as inaccessible. <b>Nothing here is restricted</b>; every URL returns 200 to any user agent.</p>
         <pre class="pt-json" style="margin-top:14px">curl -O https://netmobster.github.io/seren/source/gate.py
 curl -O https://netmobster.github.io/seren/evidence/ledger.jsonl
 curl -O https://netmobster.github.io/seren/evidence/facts.jsonl
