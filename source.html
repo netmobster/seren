@@ -148,8 +148,25 @@
         <tr><td><b>&ldquo;An adventure is data, not a script.&rdquo;</b></td><td><a href="source/modules-README.md" class="dust">the module schema</a> &mdash; beats record a state change, never a scene</td></tr>
         <tr><td><b>&ldquo;There is a procedure that builds a campaign.&rdquo;</b></td><td><a href="source/campaign-start.md" class="dust">campaign-start.md</a></td></tr>
         <tr><td><b>&ldquo;The player&rsquo;s own settings are load-bearing and conveniently unpublished.&rdquo;</b></td><td><a href="source/table-agreement-sample.md" class="dust">table-agreement-sample.md</a> &mdash; every mechanically-cited section in full; one section&rsquo;s <em>answers</em> cut and its <em>shape</em> kept</td></tr>
+        <tr><td><b>&ldquo;The validator would catch a softened result.&rdquo;</b></td><td><a href="source/CHANGELOG.md" class="dust">CHANGELOG.md</a> &mdash; <b>it would not, until 28 August.</b> A reader found the hole by running the published commands against the published files. Dated, with what it was and was not checking</td></tr>
         <tr><td><b>&ldquo;A session actually happened.&rdquo;</b></td><td><a href="evidence/transcript.md" class="dust">transcript.md</a> and <a href="evidence/FINDING.md" class="dust">FINDING.md</a>, which the DM wrote about its own run</td></tr>
       </table>
+
+      <div class="pt-batch" style="margin-top:34px">
+        <div class="label-wide">Verify it yourself &mdash; about two minutes</div>
+        <p class="text-4" style="margin-top:12px">Download the validator and the session&rsquo;s files and check the arithmetic without taking anyone&rsquo;s word for it. Python 3, no dependencies.</p>
+        <pre class="pt-json" style="margin-top:14px">curl -O https://netmobster.github.io/seren/source/gate.py
+curl -O https://netmobster.github.io/seren/evidence/ledger.jsonl
+curl -O https://netmobster.github.io/seren/evidence/facts.jsonl
+
+python gate.py check ledger.jsonl   <span class="k">&rarr;</span> <span class="s">18 entries, all valid.</span>
+python gate.py check facts.jsonl    <span class="k">&rarr;</span> <span class="s">54 entries, all valid.</span>
+python gate.py count ledger.jsonl   <span class="k">&rarr;</span> <span class="s">entries by type, and how many involved a die</span></pre>
+
+        <p class="text-4" style="margin-top:16px"><b>What that proves:</b> every total rebuilds from its own die and modifiers, <b>every verdict agrees with its own arithmetic</b> &mdash; a stated pass against a DC it did not meet is refused &mdash; no id is reused or out of order, and no entry carries a field its type does not define.</p>
+        <p class="text-4" style="margin-top:14px"><b>What it does not prove:</b> that the file is complete. <a href="evidence/README.md" class="dust">That distinction is the session&rsquo;s main finding</a>, and it is written into the evidence folder beside the files rather than only here.</p>
+        <p class="text-4" style="margin-top:14px">⚠️ <b>And the verdict check is younger than the ledger it validates.</b> Until 28 August the gate confirmed that totals rebuilt and never confirmed that <code style="font-family:var(--mono)">pass</code> agreed with them &mdash; <b>a reader found that by running exactly these commands</b>, which is the point of publishing them. Every existing file passes the stricter check, so the hole was real and nothing had gone through it. <a href="source/CHANGELOG.md" class="dust"><b>The changelog says what the tool was checking on which day</b></a>, because a guarantee without a date is not one.</p>
+      </div>
 
       <p class="text-4 pt-lede" style="margin-top:30px">The <a href="playtest.html" class="dust">playtest page</a> carries the other half &mdash; a session that actually ran on these, with <a href="evidence/ledger.jsonl" class="dust">its ledger</a>, <a href="evidence/facts.jsonl" class="dust">its facts file</a> and <a href="evidence/transcript.md" class="dust">its transcript</a>.</p>
     </div>
@@ -174,6 +191,14 @@
         <tr>
           <td><b>The validator is deliberately shallow.</b></td>
           <td>It checks arithmetic and field names. It cannot tell you a difficulty was unfair or a ruling was wrong, and it cannot tell you an entry is <em>missing</em> &mdash; which is exactly how the first session lost two rolls while passing validation.</td>
+        </tr>
+        <tr>
+          <td><b>The guarantees have dates.</b></td>
+          <td>The validator did not check that a stated pass agreed with its own arithmetic until 28 August, after the session it validates. A reader found that by downloading it and trying. Every existing file passes the stricter check &mdash; the hole was real and nothing had gone through it &mdash; but the promises are versioned and the <a href="source/CHANGELOG.md" class="dust">changelog</a> says which were in force when.</td>
+        </tr>
+        <tr>
+          <td><b>The batch commitment is untested.</b></td>
+          <td>The command that writes a sequence of dice to the ledger before any of it is spent exists and works. <b>The session on the playtest page predates it and does not use it</b> &mdash; its eight dice were disclosed to the player but recorded inside a note rather than as a committed batch. The mechanism is real; the evidence for it is not there yet.</td>
         </tr>
         <tr>
           <td><b>Several pieces are specified and unbuilt.</b></td>

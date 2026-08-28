@@ -3,9 +3,11 @@
 """
 gate.py - the write-gate for ledger.jsonl
 
+    python scripts/gate.py roll   <file.jsonl> 1d20 '<entry>'   # roll AND log, one op
+    python scripts/gate.py batch  <file.jsonl> 8d20             # commit a sequence first
     python scripts/gate.py append <ledger.jsonl> '<json entry>'
-    python scripts/gate.py check  <file.jsonl>
-    python scripts/gate.py count  <file.jsonl>   # entries by type - COMPLETENESS
+    python scripts/gate.py check  <file.jsonl>                   # validate a whole file
+    python scripts/gate.py count  <file.jsonl>                   # entries by type
 
 APPEND validates one entry and writes it only if it passes. CHECK validates a
 whole file and touches nothing.
@@ -287,6 +289,32 @@ def validate(e, seen_ids, last_n):
     else:
         dmod = 0
 
+    # --- the VERDICT has to match the arithmetic ---------------------------
+    # Added 2026-08-28. A reader ran the published validator against the
+    # published ledger and found this hole in about ten minutes: the gate
+    # checked that `total` rebuilt from the die, and never checked that
+    # `pass` agreed with it. A total of 7 against DC 13 was accepted as
+    # `pass: true`.
+    #
+    # That is the exact failure this project exists to exclude. Softening a
+    # result does not require bad arithmetic - it requires an honest total
+    # and a dishonest verdict, which is the cheapest lie available and was
+    # the one thing nothing was watching.
+    for value_field, threshold_field in (("pass", "dc"), ("hit", "vs")):
+        if value_field in e and threshold_field in e:
+            got, thr, tot = e[value_field], e[threshold_field], e.get("total")
+            if isinstance(got, bool) and isinstance(thr, int) and isinstance(tot, int):
+                if got != (tot >= thr):
+                    raise Refused(
+                        eid,
+                        f"`{value_field}` is {str(got).lower()} but total {tot} "
+                        f"vs `{threshold_field}` {thr} says "
+                        f"{str(tot >= thr).lower()} - the verdict must match the "
+                        f"arithmetic. A true total with a false verdict is what "
+                        f"softening looks like",
+                        "S2.3",
+                    )
+
     # --- and the arithmetic has to close -----------------------------------
     if "total" in e and isinstance(roll, int) and isinstance(e["total"], int):
         expected = roll + dmod + modsum
@@ -418,15 +446,25 @@ def main(argv):
             except json.JSONDecodeError as err:
                 print(f"REFUSED  not valid JSON - {err}", file=sys.stderr)
                 return 1
-            if "roll" in entry or "total" in entry:
-                print("REFUSED  do not supply `roll` or `total` - roll produces them",
-                      file=sys.stderr)
-                return 1
+            for banned in ("roll", "total", "pass", "hit"):
+                if banned in entry:
+                    print(f"REFUSED  do not supply `{banned}` - roll produces it. "
+                          "Declaring the outcome before the die exists is how a "
+                          "false verdict gets written.", file=sys.stderr)
+                    return 1
             entry["id"] = nid
             entry.setdefault("rd", None)
             entry["roll"] = dice[0] if n_dice == 1 else sum(dice)
             mods = sum(int(v) for _, v in entry.get("mods", []))
             entry["total"] = entry["roll"] + dmod + mods
+            # Derive the verdict. It is never an input: `pass` is required on
+            # check and save, so accepting it would mean declaring the outcome
+            # before the die existed - which made the fix for the lost rolls
+            # the easiest way to write a false one.
+            if isinstance(entry.get("dc"), int):
+                entry["pass"] = entry["total"] >= entry["dc"]
+            if isinstance(entry.get("vs"), int):
+                entry["hit"] = entry["total"] >= entry["vs"]
             if n_dice > 1:
                 entry["dice"] = spec
 
