@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SEREN AI — The Source</title>
+  <meta name="description" content="It is reasonable to assume this is a clever prompt. Here are the files it actually runs on.">
+  <meta name="theme-color" content="#100d0b">
+  <meta property="og:title" content="SEREN AI — The Source">
+  <meta property="og:description" content="It is reasonable to assume this is a clever prompt. Here are the files it actually runs on.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&family=IBM+Plex+Serif:wght@300;700&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="seren.css">
+</head>
+<body>
+<div class="page-box">
+
+  <header class="site-header">
+    <div class="row-3">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="page-box-2">
+        <circle cx="12" cy="12" r="10.5" stroke="rgba(232,225,214,.22)" stroke-width="1"></circle>
+        <circle cx="12" cy="12" r="6.6" stroke="#b07a4e" stroke-width="1" stroke-dasharray="2.4 3.4"></circle>
+        <circle cx="12" cy="12" r="2.5" fill="#b07a4e"></circle>
+        <circle cx="18.6" cy="12" r="1.5" fill="#e8e1d6"></circle>
+      </svg>
+      <span class="page-meta">Seren&nbsp;AI</span>
+    </div>
+    <nav class="page-meta-2">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="backend.html" class="nav-btn">The backend</a>
+      <a href="playtest.html" class="nav-btn">The playtest</a>
+      <a href="source.html" class="nav-btn is-here">The source</a>
+      <a href="index.html#contact" class="nav-btn nav-btn-key">Get in touch</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="page-box-6">
+    <div class="page-veil-2"></div>
+    <div class="page-col-2">
+      <div class="page-meta-8">
+        <span class="page-dot"></span>
+        <span class="label-wide">The files, not the pitch</span>
+      </div>
+      <h1 class="page-title-3">The Source.</h1>
+      <p class="page-display-5">It is reasonable to assume this is a clever prompt. Here is what it actually runs on.</p>
+      <p class="page-text-3 pt-lede">Most &ldquo;AI dungeon master&rdquo; projects are a long instruction and a good model. That is a fair first guess about this one, and the only useful answer is the files rather than an argument about them. So: what the system is made of, what each part does, and what it still cannot do.</p>
+      <p class="page-text-3 pt-lede" style="margin-top:14px">This is not published out of virtue. <b>Anyone can copy a schema in an afternoon</b> &mdash; the <code style="font-family:var(--mono)">believe</code>/<code style="font-family:var(--mono)">truth</code> pattern is a dozen lines. What is harder to copy is a session where the schema caught something, and harder still is the habit of publishing the session where it did not.</p>
+
+      <div class="pt-nums">
+        <div class="pt-num"><b>30,678</b><span>lines, ours</span></div>
+        <div class="pt-num"><b>617</b><span>rules articles</span></div>
+        <div class="pt-num"><b>1</b><span>python file</span></div>
+        <div class="pt-num"><b>518</b><span>lines of it</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">The shape of it</div>
+      <h2 class="layers-title">Not a prompt. Also not an app.</h2>
+      <p class="text-4 pt-lede">Thirty thousand lines of structured markdown, and <b>one</b> Python file. That is deliberate and it is written down as a constraint: the runtime <em>is</em> the model, so anything that can be a document should be a document, and code is reserved for the one job a document cannot do &mdash; refusing.</p>
+      <p class="text-4 pt-lede" style="margin-top:20px">So it is not a prompt, because a prompt has no schema, no validator, no separation between what is true and what is known, and nothing that can tell it no. And it is not an application, because there is no engine here doing the reasoning. <b>It is a set of documents strict enough to be checkable, and one script that does the checking.</b></p>
+    </div>
+  </section>
+
+  <!-- ============ WHAT A PROMPT CANNOT DO ============ -->
+  <section class="band-2">
+    <div class="wrap">
+      <div class="eyebrow">Five things a prompt cannot do</div>
+      <h2 class="layers-title">Each one is a file you can open.</h2>
+
+      <div class="pt-two" style="margin-top:34px">
+        <div class="how-card">
+          <span class="label-wide">1 &mdash; It refuses</span>
+          <p class="text-4" style="margin-top:14px"><a href="source/gate.py" class="dust"><b>gate.py</b></a>, 518 lines, standard library only. It validates every entry before it is written and <b>rejects the ones that do not add up</b>. It knows nothing about D&amp;D &mdash; it cannot tell you whether a ruling was fair. It knows that a d20 stops at twenty and that addition is not optional.</p>
+          <p class="text-4" style="margin-top:14px">Its <code style="font-family:var(--mono)">roll</code> command produces the dice and the ledger line in one operation, so <b>an unlogged roll is an unrolled roll</b>. That exists because the first played session lost two rolls to a narrate-then-log habit, and an instruction to remember is not a control.</p>
+        </div>
+        <div class="how-card">
+          <span class="label-wide">2 &mdash; It has a schema</span>
+          <p class="text-4" style="margin-top:14px"><a href="source/state-formats.md" class="dust"><b>state-formats.md</b></a> defines two append-only files. The <b>ledger</b> records what happened, with inputs rather than conclusions &mdash; the raw die and each modifier, so the total is derivable rather than asserted.</p>
+          <p class="text-4" style="margin-top:14px">The <b>facts file</b> records what is true and who knows it, in four values: <em>true</em>, <em>known</em>, <em>suspected</em>, <em>false</em>. A fact the party believes and is wrong about has a place to live. <b>That is the whole fog-of-war mechanism, and it is a field.</b></p>
+        </div>
+      </div>
+
+      <div class="pt-two" style="margin-top:20px">
+        <div class="how-card">
+          <span class="label-wide">3 &mdash; It looks things up</span>
+          <p class="text-4" style="margin-top:14px"><a href="source/library-README.md" class="dust"><b>library/</b></a> exists for one reason, stated in its own first paragraph: the model has far more 2014 D&amp;D in training than 2024, and left to recall rules it will serve the old ones fluently. <b>Fluent wrong does not announce itself.</b></p>
+          <p class="text-4" style="margin-top:14px">So the rules are on disk as <b>617 individual articles</b> &mdash; one file per spell, item, condition, feat, class &mdash; plus <a href="source/core.md" class="dust">progression tables for all twelve classes</a>. In the first session that caught a module-breaking interaction before a die was rolled.</p>
+        </div>
+        <div class="how-card">
+          <span class="label-wide">4 &mdash; It separates template from instance</span>
+          <p class="text-4" style="margin-top:14px"><a href="source/architecture.md" class="dust"><b>architecture.md</b></a> splits everything three ways: the <b>master</b> (a character at their canonical level), the <b>campaign build</b> (the same character expressed at this campaign&rsquo;s level), and <b>runtime state</b>.</p>
+          <p class="text-4" style="margin-top:14px">A played campaign lives in <a href="source/LIVE-README.md" class="dust"><b>its own directory that never ships</b></a>. Modules are portable; playthroughs are not. That is a filesystem fact rather than a policy, which is the only kind that holds.</p>
+        </div>
+      </div>
+
+      <div class="how-card" style="margin-top:20px">
+        <span class="label-wide">5 &mdash; The world accretes, and the DM is swappable</span>
+        <p class="text-4" style="margin-top:14px"><a href="source/npc-containers.md" class="dust"><b>npc-containers.md</b></a> is the rule that people are created <b>on contact</b> &mdash; a town does not ship with a census, it gains one person at a time as the party meets them, each with a file and an interaction log. A fact moves from <em>suspected</em> to <em>known</em> by changing a field, not by walking a path.</p>
+        <p class="text-4" style="margin-top:14px">And <a href="source/persona-format.md" class="dust"><b>persona-format.md</b></a> makes the dungeon master itself a swappable file: seven dials, a set of triggered moves, and <b>a falsifiable prediction</b> &mdash; a sentence a player who never read the file could check. Same contract, different persona, different game.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ADVENTURES AS DATA ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">And the adventures are data too</div>
+      <h2 class="layers-title">A module is a schema, not a script.</h2>
+      <p class="text-4 pt-lede"><a href="source/modules-README.md" class="dust"><b>The module schema</b></a> converts a written adventure into structure. Its central rule is that a beat records <em>a state change that must happen</em> &mdash; <em>&ldquo;the party learns X&rdquo;</em> &mdash; never a scene. Every beat also carries a <code style="font-family:var(--mono)">dm_owns</code> field naming what is explicitly free.</p>
+      <p class="text-4 pt-lede" style="margin-top:20px">That is what stops a module becoming a railroad, and it is why the first session&rsquo;s ending was none of the four the adventure lists while still hitting every beat the adventure requires.</p>
+      <p class="text-4 pt-lede" style="margin-top:20px"><a href="source/campaign-start.md" class="dust"><b>campaign-start.md</b></a> is the procedure that turns a module in that shape into a playable campaign folder.</p>
+
+      <div class="pt-batch" style="margin-top:30px">
+        <div class="label-wide">The test the schema was actually put to</div>
+        <p class="text-4" style="margin-top:12px">The adventure played in the <a href="playtest.html" class="dust">first session</a> was not written for this system. It is <b>A Wild Sheep Chase</b> by R.M. Jansen-Parkes, published by <a href="https://winghornpress.com/adventures/" class="dust" rel="noopener">Winghorn Press</a> in 2016 &mdash; a real, widely-played, free third-party module for a different edition.</p>
+        <p class="text-4" style="margin-top:14px"><b>It was read and converted into the schema by hand</b>: beats as required state changes, a cast with wants and tells, fronts with clocks, elements carrying their own constraints, and a fill list naming every question the source leaves to the table. <b>Converting somebody else&rsquo;s adventure is the only honest test of a format</b> &mdash; a schema that only fits adventures written for it has proved nothing.</p>
+        <p class="text-4" style="margin-top:14px">The conversion also found things the source does not say out loud. It has one specific way a well-meaning DM ruins it, one moment the text requires be telegraphed heavily, and an assumption in its opening scene that any druid breaks. <b>Those became fields, because the schema has somewhere to put them.</b></p>
+        <p class="text-4" style="margin-top:14px">⚠️ <b>The converted file is not published, and will not be.</b> The source is DMs Guild Community Content, and that agreement commits distribution to DMs Guild. <b>Our schema is ours and is <a href="source/modules-README.md" class="dust">here in full</a>. The adventure poured into it is somebody else&rsquo;s.</b> <a href="https://winghornpress.com/adventures/" class="dust" rel="noopener">Go and get it from them</a> &mdash; it is free, and it is good.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE FILES ============ -->
+  <section class="band-2">
+    <div class="wrap">
+      <div class="eyebrow">Open anything</div>
+      <h2 class="layers-title">The files.</h2>
+
+      <p class="text-4 pt-lede" style="margin-bottom:26px">Each row is a claim first and a file second, so you can go straight from the thing you doubt to the thing that settles it.</p>
+
+      <table class="pt-tbl" style="max-width:none">
+        <tr><th style="width:46%">The claim</th><th>The file that settles it</th></tr>
+        <tr><td><b>&ldquo;It lost two rolls and says so.&rdquo;</b></td><td><a href="evidence/ledger.jsonl" class="dust">ledger.jsonl</a> &mdash; entries <code style="font-family:var(--mono)">e017</code> and <code style="font-family:var(--mono)">e018</code>, appended out of order with notes recording their own lateness</td></tr>
+        <tr><td><b>&ldquo;Nothing was softened.&rdquo;</b></td><td><a href="source/gate.py" class="dust">gate.py</a> + <a href="evidence/ledger.jsonl" class="dust">ledger.jsonl</a> &mdash; run <code style="font-family:var(--mono)">check</code> and every total rebuilds from its own die and modifiers</td></tr>
+        <tr><td><b>&ldquo;The player was wrong about something and it was recorded.&rdquo;</b></td><td><a href="evidence/facts.jsonl" class="dust">facts.jsonl</a> &mdash; the two <code style="font-family:var(--mono)">believe</code> entries, both <code style="font-family:var(--mono)">truth: false</code></td></tr>
+        <tr><td><b>&ldquo;The DM is bound by something written down.&rdquo;</b></td><td><a href="evidence/DM.md" class="dust">DM.md</a> &mdash; 276 lines, every clause marked earned or guessed</td></tr>
+        <tr><td><b>&ldquo;It looks rules up instead of recalling them.&rdquo;</b></td><td><a href="source/library-README.md" class="dust">library/</a> and <a href="source/core.md" class="dust">core.md</a> &mdash; and <a href="source/fireball.md" class="dust">one of the 617 articles</a> to show the shape</td></tr>
+        <tr><td><b>&ldquo;Truth and knowledge are different things here.&rdquo;</b></td><td><a href="source/state-formats.md" class="dust">state-formats.md</a> &sect;5 &mdash; four visibility values, one of them for being wrong</td></tr>
+        <tr><td><b>&ldquo;A played campaign is separate from the templates.&rdquo;</b></td><td><a href="source/architecture.md" class="dust">architecture.md</a> &sect;2b and <a href="source/LIVE-README.md" class="dust">LIVE/</a></td></tr>
+        <tr><td><b>&ldquo;People are created when you meet them, not in advance.&rdquo;</b></td><td><a href="source/npc-containers.md" class="dust">npc-containers.md</a></td></tr>
+        <tr><td><b>&ldquo;The dungeon master is a swappable file.&rdquo;</b></td><td><a href="source/persona-format.md" class="dust">persona-format.md</a> &mdash; seven dials, triggered moves, and a prediction a player can check</td></tr>
+        <tr><td><b>&ldquo;An adventure is data, not a script.&rdquo;</b></td><td><a href="source/modules-README.md" class="dust">the module schema</a> &mdash; beats record a state change, never a scene</td></tr>
+        <tr><td><b>&ldquo;There is a procedure that builds a campaign.&rdquo;</b></td><td><a href="source/campaign-start.md" class="dust">campaign-start.md</a></td></tr>
+        <tr><td><b>&ldquo;A session actually happened.&rdquo;</b></td><td><a href="evidence/transcript.md" class="dust">transcript.md</a> and <a href="evidence/FINDING.md" class="dust">FINDING.md</a>, which the DM wrote about its own run</td></tr>
+      </table>
+
+      <p class="text-4 pt-lede" style="margin-top:30px">The <a href="playtest.html" class="dust">playtest page</a> carries the other half &mdash; a session that actually ran on these, with <a href="evidence/ledger.jsonl" class="dust">its ledger</a>, <a href="evidence/facts.jsonl" class="dust">its facts file</a> and <a href="evidence/transcript.md" class="dust">its transcript</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ HONEST LIMITS ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">What this is not</div>
+      <h2 class="layers-title">The part a file dump can hide.</h2>
+      <p class="text-4 pt-lede">A pile of documents can look like more than it is, so here is the honest boundary.</p>
+
+      <table class="pt-tbl" style="max-width:none">
+        <tr>
+          <td style="width:34%"><b>It has been played once.</b></td>
+          <td>One session, one player, and the player wrote the system. Most of the contract is still marked as a guess rather than something a session has proved.</td>
+        </tr>
+        <tr>
+          <td><b>There is no product.</b></td>
+          <td>No install, no interface, no account. It is a repository a capable model reads. The panel used at the table was built during the session and thrown together from what the game needed.</td>
+        </tr>
+        <tr>
+          <td><b>The validator is deliberately shallow.</b></td>
+          <td>It checks arithmetic and field names. It cannot tell you a difficulty was unfair or a ruling was wrong, and it cannot tell you an entry is <em>missing</em> &mdash; which is exactly how the first session lost two rolls while passing validation.</td>
+        </tr>
+        <tr>
+          <td><b>Several pieces are specified and unbuilt.</b></td>
+          <td>The session ceremonies are a placeholder inside the contract. The campaign generator has never generated a campaign &mdash; the one that was played was assembled by hand on purpose, so that a real folder exists before anything tries to produce one automatically.</td>
+        </tr>
+      </table>
+
+      <p class="text-4 pt-lede" style="margin-top:30px">None of that is in the files unless you read them closely, so it is here instead. <b>The claim is that this is a system rather than a prompt, and that the system is early.</b> Both halves are meant.</p>
+    </div>
+  </section>
+
+  <section class="band-2">
+    <div class="wrap">
+      <div class="eyebrow">The standing rule</div>
+      <h2 class="layers-title">The next one will be less flattering, and it goes up too.</h2>
+      <p class="text-4 pt-lede">The first release is easy. The failure in it is a bookkeeping miss, caught by the system&rsquo;s own close ceremony, on a session that otherwise went well. <b>That is a comfortable thing to publish and it proves less than it appears to.</b></p>
+      <p class="text-4 pt-lede" style="margin-top:20px">At some point there will be a run where the model actually softens a result, or a combat session where the ledger falls apart under per-round state, or a persona that turns out to do nothing at all. <b>Publishing that one is what would make this a practice rather than a launch tactic</b>, so the rule is written down now, while it is cheap to commit to:</p>
+
+      <div class="pt-batch" style="margin-top:26px">
+        <p class="text-4" style="margin:0"><b>Every session that runs against this system gets a findings file, and every findings file gets published, whatever it says.</b> The dungeon master writes it before anyone reads the transcript. If a run produces a result that undermines a claim made on this site, that run goes up and the claim comes down.</p>
+      </div>
+
+      <p class="text-4 pt-lede" style="margin-top:26px">There is no way to prove that commitment in advance. It is here so that it is on the record before there is anything uncomfortable to test it with.</p>
+    </div>
+  </section>
+
+  <section class="files-box-2">
+    <div class="files-row-3">
+      <h2 class="files-title">Read the files.<br><span class="text">Then tell me where it breaks.</span></h2>
+      <p class="files-text-2">If you build systems, the interesting conversation is about the parts that are wrong &mdash; the shallow validator, the unbuilt ceremonies, the contract clauses still marked as guesses. That is the conversation I want to be having.</p>
+      <div class="files-row-4">
+        <a href="mailto:wearecleardigital@gmail.com" class="files-meta-2">wearecleardigital@gmail.com</a>
+        <a href="playtest.html" class="files-card-2">See it run</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="row-5">
+    <div class="row-3">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="block">
+        <circle cx="12" cy="12" r="10.5" stroke="rgba(232,225,214,.2)" stroke-width="1"></circle>
+        <circle cx="12" cy="12" r="6.6" stroke="#b07a4e" stroke-width="1" stroke-dasharray="2.4 3.4"></circle>
+        <circle cx="12" cy="12" r="2.5" fill="#b07a4e"></circle>
+      </svg>
+      <span class="meta-4">Seren&nbsp;AI</span>
+    </div>
+    <div class="label">30,678 lines · 617 articles · one script</div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -31,6 +31,7 @@
       <a href="index.html" class="nav-btn">Home</a>
       <a href="backend.html" class="nav-btn">The backend</a>
       <a href="playtest.html" class="nav-btn is-here">The playtest</a>
+      <a href="source.html" class="nav-btn">The source</a>
       <a href="index.html#contact" class="nav-btn nav-btn-key">Get in touch</a>
     </nav>
   </header>
@@ -104,13 +105,15 @@
           <p class="text-4" style="margin-top:14px">
             <a href="evidence/DM.md" class="dust"><b>DM.md</b></a> &mdash; the contract, every clause marked earned or guessed<br>
             <a href="evidence/gate.py" class="dust"><b>gate.py</b></a> &mdash; the validator, which knows nothing about D&amp;D<br>
-            <a href="evidence/DM-persona.md" class="dust"><b>The Registrar</b></a> &mdash; the persona, and the prediction it is judged by<br>
-            <a href="evidence/modified-wand.md" class="dust"><b>modified-wand.md</b></a> &mdash; the climax&rsquo;s mechanics, authored before play
+<a href="source/persona-format.md" class="dust"><b>persona-format.md</b></a> &mdash; the DM as a swappable file, with a checkable prediction<br>
+            <a href="source.html" class="dust"><b>the module schema</b></a> &mdash; how a published adventure becomes data
           </p>
         </div>
       </div>
 
       <p class="text-4 pt-lede" style="margin-top:30px"><b>One file is deliberately not here.</b> The table agreement records what this player does not want in their game &mdash; where the content lines are, what gets played for grief rather than gore. It is inherited by every campaign and it never ships with one, because a folder you hand to someone else must not carry another person&rsquo;s boundaries. <b>That rule is in the contract above, and this is it being kept.</b></p>
+
+      <p class="text-4 pt-lede" style="margin-top:20px"><b>And if the doubt is that this is a clever prompt rather than a system</b> &mdash; that is a fair first guess, and <a href="source.html" class="dust">the source page</a> answers it with the schemas, the validator and the contract the whole thing runs on.</p>
 
       <p class="text-4 pt-lede" style="margin-top:20px">⚠️ <b>What the ledger still cannot do:</b> it validates shape, not completeness. It will tell you an entry is malformed. It will not tell you an entry is absent &mdash; which is exactly how the two missing rolls survived a clean validation. <a href="evidence/gate.py" class="dust">The <code style="font-family:var(--mono)">roll</code> command</a> was added afterwards so that the dice and the ledger line are produced by one operation and an unlogged roll is an unrolled roll.</p>
     </div>
@@ -445,8 +448,8 @@ shuf -i 1-4  -n 1 -r   &rarr;   3     &rarr;  2 charges left in the wand</pre>
       <div class="eyebrow">Why Del is alive</div>
       <h2 class="layers-title">The ending came out of a rules lookup.</h2>
       <div class="pt-roll" style="margin-bottom:26px">
-        <div class="pt-roll-top"><b>The wand</b> <span>authored before play &mdash; <code style="font-family:var(--mono)">elements/modified-wand.md</code></span></div>
-        <div class="pt-roll-note">Charges: 1d4&minus;1, minimum 1, resets at dawn. &nbsp;&middot;&nbsp; Every use requires a DC 17 Arcana check. &nbsp;&middot;&nbsp; <b>Success casts the spell and raises the DC by 1, permanently.</b> &nbsp;&middot;&nbsp; Fail by 1&ndash;5 and the target becomes a gibbering mouther and the wand detonates, per charge remaining.<br><br><em>The rising difficulty and the failure bands are the module&rsquo;s, written before anyone played it. The DC stood at 21 rather than 17 because Noke had already succeeded with it four times.</em></div>
+        <div class="pt-roll-top"><b>The wand</b> <span>authored before play, not invented during it</span></div>
+        <div class="pt-roll-note">The escalating difficulty, the failure bands and the detonation are all specified in the module&rsquo;s own item file, written before anyone played it &mdash; including the reason the DC stood at 21 rather than its base value. <b>None of it was improvised for a dramatic ending.</b><br><br>⚠️ <em>That file is not published. The adventure is <b>A Wild Sheep Chase</b> by R.M. Jansen-Parkes, <a href="https://winghornpress.com/adventures/" class="dust" rel="noopener">Winghorn Press</a> &mdash; DMs Guild Community Content, which commits distribution to DMs Guild. <a href="source.html" class="dust">Our schema is published</a>; their adventure is not ours to hand out. It is free from them and it is good.</em></div>
       </div>
 
       <p class="text-4 pt-lede">The spell that undoes the transformation gives an <em>unwilling</em> target a saving throw and a <em>willing</em> one nothing at all. The DM read that in the rules library rather than recalling it, and the player told all nine transmuted people the truth about it.</p>

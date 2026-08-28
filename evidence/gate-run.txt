@@ -1,0 +1,13 @@
+18 entries, all valid.
+54 entries, all valid.
+18 entries in evidence/ledger.jsonl
+     5  check
+     4  cast
+     3  use
+     3  ruling
+     2  expire
+     1  save
+
+  6 of these involved a die.
+  Compare that against the rolls you spoke aloud. If they
+  disagree, the ledger is incomplete and check will not say so.
