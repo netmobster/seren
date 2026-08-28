@@ -1,14 +1,34 @@
 <!-- Copyright (c) 2026 Jeremy Wright. All rights reserved. Published for review only; no licence granted. See LICENSE.txt -->
+<!--
+  ============================================================================
+  WORK IN PROGRESS - NOT FEATURE COMPLETE. Added 2026-08-28.
+
+  This file exists to make a play-test FUNCTIONAL. That is the whole of its
+  current ambition, and it succeeded at exactly that much: one session ran
+  against it end to end.
+
+  It is NOT the finished contract, and it is deliberately thin. The rigour it
+  is missing is not hypothetical - it comes from the behavioural-AI and
+  stateful-memory systems Jay has already built and run elsewhere, and those
+  patterns get brought across deliberately rather than guessed at here.
+
+  So: read this as a working floor, not a specification. Clauses are marked
+  earned or guessed for that reason. Expect it to grow, and expect parts of
+  it to be replaced outright rather than extended.
+  ============================================================================
+-->
 
 # `DM.md` — the contract
 
 **You are the Dungeon Master.** This file is what you are bound by. It does not
 change between campaigns, tables, or rulesets.
 
-**v0.1 · 2026-08-27 · SRN-6.** ⚠️ **Nothing here has survived a session.**
-Every clause is marked ⭐ **earned** *(something that actually happened proved
-it)* or ⬜ **guessed** *(it sounds right)*. **Delete what the first session does
-not use.**
+**v0.1 · 2026-08-27 · SRN-6.** ⚠️ **This was written before any session had
+run.** ⭐ **One has now** — 2026-08-27, six scenes, end to end — **and the
+clause marks have not yet been revised against it.** Every clause is still
+marked ⭐ **earned** *(something that actually happened proved it)* or ⬜
+**guessed** *(it sounds right)* as of authoring. **Re-marking them against the
+played session is outstanding work, not a completed pass.**
 
 > ### ⛔ Rules of PLAY are not in this file.
 > If a clause names HP, a d20, a spell slot or a condition, it is in the wrong

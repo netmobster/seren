@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/seren/">
+  <link rel="canonical" href="https://netmobster.github.io/seren/source-files.html">
+  <title>SEREN AI &mdash; Files</title>
+  <meta name="description" content="Every file published from the Seren repository, what each one is, and an explicit list of what is not published and why.">
+  <meta name="theme-color" content="#100d0b">
+  <meta property="og:title" content="SEREN AI &mdash; Files">
+  <meta property="og:description" content="Every file published from the Seren repository, what each one is, and an explicit list of what is not published and why.">
+  <meta property="og:url" content="https://netmobster.github.io/seren/source-files.html">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&family=IBM+Plex+Serif:wght@300;700&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="alternate" type="text/plain" href="llms.txt" title="Seren AI - full URL map for AI assistants">
+  <link rel="stylesheet" href="seren.css">
+</head>
+<body>
+<div class="page-box">
+
+  <header class="site-header">
+    <div class="row-3">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="page-box-2">
+        <circle cx="12" cy="12" r="10.5" stroke="rgba(232,225,214,.22)" stroke-width="1"></circle>
+        <circle cx="12" cy="12" r="6.6" stroke="#b07a4e" stroke-width="1" stroke-dasharray="2.4 3.4"></circle>
+        <circle cx="12" cy="12" r="2.5" fill="#b07a4e"></circle>
+        <circle cx="18.6" cy="12" r="1.5" fill="#e8e1d6"></circle>
+      </svg>
+      <span class="page-meta">Seren&nbsp;AI</span>
+    </div>
+    <nav class="page-meta-2">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="backend.html" class="nav-btn">The backend</a>
+      <a href="table.html" class="nav-btn">The table</a>
+      <a href="playtest.html" class="nav-btn">The playtest</a>
+      <a href="source.html" class="nav-btn is-here">The source</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="index.html#contact" class="nav-btn nav-btn-key">Get in touch</a>
+    </nav>
+  </header>
+
+  <section class="page-box-6">
+    <div class="wrap">
+      <h1 class="page-title-3">Files.</h1>
+      <p class="page-display-5">Everything published, what each one is, and the list of what is held back with the reason attached.</p>
+      <p class="page-text-3 pt-lede"><b>This is a snapshot of a moving repository.</b> Files here are copies taken at a moment, not a live mirror &mdash; a copy can fall behind the working tree and has done before. Where a number is quoted anywhere on this site it carries the date it was counted, for the same reason.</p>
+      <p class="page-text-3 pt-lede" style="margin-top:14px"><b>Nothing here is a finished specification.</b> The project is four days old. Several of these files contain clauses explicitly marked as guesses, and at least one contains a correction to something it previously asserted. That is the intended state, not an apology for it.</p>
+
+      <nav class="subnav">
+        <span class="subnav-lab">The source</span>
+        <a href="source.html" class="subnav-btn">Overview</a>
+        <a href="source-files.html" class="subnav-btn is-here">Files</a>
+        <a href="source-schemas.html" class="subnav-btn">Schemas</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============ EVIDENCE ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Evidence &mdash; the played session, 27 August 2026</div>
+      <h2 class="layers-title">The artifacts, not summaries of them.</h2>
+      <p class="text-4 pt-lede">These are what the session actually produced. The two ledger entries appended late are still in there, out of order, with notes recording their own lateness.</p>
+      <div class="tbl-scroll">
+      <table class="ftbl">
+        <tr><th style="width:24%">File</th><th>What it is</th><th style="width:10%">Size</th></tr>
+        <tr><td><a href="evidence/ledger.jsonl" class="dust"><code>ledger.jsonl</code></a></td><td>Every roll, recording <b>raw die and modifiers</b> so the total is derivable rather than asserted. Entries <code>e017</code> and <code>e018</code> were written late.</td><td class="sz">7 KB</td></tr>
+        <tr><td><a href="evidence/facts.jsonl" class="dust"><code>facts.jsonl</code></a></td><td>What is true, what is known, and <b>what the player believes wrongly</b> &mdash; the two <code>believe</code> entries carry <code>truth: false</code>.</td><td class="sz">20 KB</td></tr>
+        <tr><td><a href="evidence/transcript.md" class="dust"><code>transcript.md</code></a></td><td>The session as played, six scenes.</td><td class="sz">29 KB</td></tr>
+        <tr><td><a href="evidence/FINDING.md" class="dust"><code>FINDING.md</code></a></td><td>What the dungeon master wrote about its own run, <b>before anyone read the transcript.</b> It leads with a failure.</td><td class="sz">22 KB</td></tr>
+        <tr><td><a href="evidence/DM.md" class="dust"><code>DM.md</code></a></td><td>The contract it was bound by. <b>Carries a work-in-progress notice</b> &mdash; it was written to make a play-test functional, not to be complete.</td><td class="sz">13 KB</td></tr>
+        <tr><td><a href="evidence/gate.py" class="dust"><code>gate.py</code></a></td><td>The validator as it stood for this session.</td><td class="sz">24 KB</td></tr>
+        <tr><td><a href="evidence/gate-run.txt" class="dust"><code>gate-run.txt</code></a></td><td>Output of running it against the above.</td><td class="sz">329 B</td></tr>
+        <tr><td><a href="evidence/README.md" class="dust"><code>README.md</code></a></td><td>What each file is and how to check it yourself.</td><td class="sz">5 KB</td></tr>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCE ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Source &mdash; the system itself</div>
+      <h2 class="layers-title">Published so the schemas can be read rather than described.</h2>
+      <div class="tbl-scroll">
+      <table class="ftbl">
+        <tr><th style="width:24%">File</th><th>What it is</th><th style="width:10%">Size</th></tr>
+        <tr><td><a href="source/gate.py" class="dust"><code>gate.py</code></a></td><td><b>The only script in the project.</b> Python 3, no dependencies. Validates that every total rebuilds from its own die and modifiers, and that every verdict matches its total against its own DC.</td><td class="sz">24 KB</td></tr>
+        <tr><td><a href="source/CHANGELOG.md" class="dust"><code>CHANGELOG.md</code></a></td><td><b>Dated record of what the validator was and was not checking on any given day</b>, including the hole a reader found by running the published commands against the published files.</td><td class="sz">4 KB</td></tr>
+        <tr><td><a href="source/architecture.md" class="dust"><code>architecture.md</code></a></td><td>The spine. Exact/mechanics versus inference/story, the template and instance split, fog of war in three directions.</td><td class="sz">21 KB</td></tr>
+        <tr><td><a href="source/state-formats.md" class="dust"><code>state-formats.md</code></a></td><td>The ledger and facts schemas, including &sect;2.3&rsquo;s rule that a verdict must match its own arithmetic.</td><td class="sz">21 KB</td></tr>
+        <tr><td><a href="source/npc-containers.md" class="dust"><code>npc-containers.md</code></a></td><td>How people persist. <b>Created when met, not in advance.</b></td><td class="sz">21 KB</td></tr>
+        <tr><td><a href="source/persona-format.md" class="dust"><code>persona-format.md</code></a></td><td>The dungeon master as a swappable file &mdash; seven dials, triggered moves, and a prediction a player can check.</td><td class="sz">20 KB</td></tr>
+        <tr><td><a href="source/campaign-start.md" class="dust"><code>campaign-start.md</code></a></td><td>The procedure that turns a filed campaign into a running one.</td><td class="sz">17 KB</td></tr>
+        <tr><td><a href="source/modules-README.md" class="dust"><code>modules-README.md</code></a></td><td>The adventure schema. <b>Beats record a state change, never a scene.</b></td><td class="sz">14 KB</td></tr>
+        <tr><td><a href="source/library-README.md" class="dust"><code>library-README.md</code></a></td><td>Why the rules are on disk instead of recalled from training.</td><td class="sz">9 KB</td></tr>
+        <tr><td><a href="source/core.md" class="dust"><code>core.md</code></a></td><td>Class progression tables, all twelve classes, levels 1&ndash;20.</td><td class="sz">23 KB</td></tr>
+        <tr><td><a href="source/fireball.md" class="dust"><code>fireball.md</code></a></td><td>One of the 617 rules articles, to show the shape.</td><td class="sz">1 KB</td></tr>
+        <tr><td><a href="source/LIVE-README.md" class="dust"><code>LIVE-README.md</code></a></td><td>Why a played campaign is kept separate from the templates.</td><td class="sz">7 KB</td></tr>
+        <tr><td><a href="source/table-agreement-sample.md" class="dust"><code>table-agreement-sample.md</code></a></td><td>The player&rsquo;s content boundaries. <b>Every mechanically-cited section in full; one section&rsquo;s answers cut and its shape kept.</b></td><td class="sz">8 KB</td></tr>
+      </table>
+      </div>
+      <p class="text-4" style="margin-top:20px">Schema definitions and filled-in samples are listed separately on <a href="source-schemas.html" class="dust">Schemas</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ NOT PUBLISHED ============ -->
+  <section class="band">
+    <div class="eyebrow" style="max-width:1000px;margin:0 auto;padding:0 28px">What is deliberately not here</div>
+    <div class="wrap">
+      <h2 class="layers-title">Nine things are held back, and each one has a reason that is not &ldquo;we would rather not.&rdquo;</h2>
+      <p class="text-4 pt-lede">A list of published files is only meaningful next to the list of unpublished ones. <b>Three of these are legal, three are the player&rsquo;s, and three would invalidate a test if they leaked.</b></p>
+
+      <div class="nope">
+        <p class="text-4" style="margin:0"><b>The converted adventure.</b> <code>campaigns/modules/a-wild-sheep-chase/</code> is marked <code>derivation: derived</code>, <code>shareable: no</code>, and its licence is the DMs Guild Community Content Agreement, which commits distribution to DMs Guild. <b>The schema publishes; the adventure does not.</b> The original is <a href="https://www.winghornpress.com/adventures/a-wild-sheep-chase/" class="dust" target="_blank" rel="noopener">A Wild Sheep Chase by Winghorn Press</a>. <b>A derived element from this module was published here once by mistake and pulled when a reader caught it.</b></p>
+      </div>
+
+      <div class="nope">
+        <p class="text-4" style="margin:0"><b>The rules corpus in full.</b> SRD 5.2 is CC-BY 4.0 and could be republished with attribution. One article is here to show the shape. <b>Mirroring 617 files of someone else&rsquo;s rules text to prove we have it is noise, not evidence.</b></p>
+      </div>
+
+      <div class="nope">
+        <p class="text-4" style="margin:0"><b>Homebrew and non-SRD species content.</b> Not ours to redistribute in bulk. The <em>schema</em> for it is published; the entries are not.</p>
+      </div>
+
+      <div class="nope">
+        <p class="text-4" style="margin:0"><b>The real table agreement.</b> <code>dm/table-agreement.md</code> is one person&rsquo;s actual content boundaries &mdash; what they do and do not want in their game. <b>It never ships, in any package, ever.</b> The published sample keeps every mechanically-cited section in full and cuts one section&rsquo;s answers while keeping its shape, so the mechanism is checkable and the person is not on display.</p>
+      </div>
+
+      <div class="nope">
+        <p class="text-4" style="margin:0"><b>The played campaign.</b> Everything under <code>LIVE/</code> is one person&rsquo;s actual game &mdash; their character, their canon, their session state. <b>Nothing in LIVE is a template and nothing in LIVE ships.</b> The session&rsquo;s evidence files are published; the campaign directory is not.</p>
+      </div>
+
+      <div class="nope">
+        <p class="text-4" style="margin:0"><b>Character sheets.</b> The <em>schema</em> is on <a href="source-schemas.html" class="dust">Schemas</a>. The sixteen filled-in sheets are real characters belonging to real people, several imported from their D&amp;D Beyond accounts. <b>A schema demonstrates the format; a stranger&rsquo;s character sheet demonstrates nothing extra.</b></p>
+      </div>
+
+      <div class="nope">
+        <p class="text-4" style="margin:0"><b>DM-side secrets.</b> <code>secrets.md</code>, companion <code>wants</code>, front clocks, the beat graph. <b>These are the exact things <a href="table.html" class="dust">The Table</a> is built to keep off a player&rsquo;s screen.</b> Publishing them would be a strange way to argue that the fog-of-war boundary is taken seriously.</p>
+      </div>
+
+      <div class="nope">
+        <p class="text-4" style="margin:0"><b>The test criteria and scoring.</b> <code>docs/test-criteria.md</code> and <code>SCORING.md</code> define what a probe or build-test is measured against. <b>A session that has read the scoring rubric is not running the test any more</b>, so these stay out of any session under test &mdash; and off this site, since the site is one of the places a session might look.</p>
+      </div>
+
+      <div class="nope">
+        <p class="text-4" style="margin:0"><b>Handoffs and operator instructions.</b> <code>HANDOFF-*.md</code> and the repository&rsquo;s root <code>CLAUDE.md</code>. The first would contaminate a test for the same reason as above; the second is a description of how one person prefers to work, which is <b>not part of the product</b> and is gitignored.</p>
+      </div>
+
+      <p class="text-4 pt-lede" style="margin-top:30px"><b>If you think something on that list should be public, the honest answer is that most of it could be.</b> The two that cannot are the derived adventure and the table agreement. Everything else is a judgement about signal, and judgements can be argued with &mdash; <a href="index.html#contact" class="dust">the contact link</a> works.</p>
+    </div>
+  </section>
+
+  <footer class="row-5">
+    <div class="row-3">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="block">
+        <circle cx="12" cy="12" r="10.5" stroke="rgba(232,225,214,.2)" stroke-width="1"></circle>
+        <circle cx="12" cy="12" r="6.6" stroke="#b07a4e" stroke-width="1" stroke-dasharray="2.4 3.4"></circle>
+        <circle cx="12" cy="12" r="2.5" fill="#b07a4e"></circle>
+      </svg>
+      <span class="meta-4">Seren&nbsp;AI</span>
+    </div>
+    <div class="label">21 files published &middot; 9 held back with reasons &middot; counted 28 Aug 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
