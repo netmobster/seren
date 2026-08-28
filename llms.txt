@@ -14,7 +14,7 @@ Built 24-28 August 2026. Not a product: a repository a capable model reads, plus
 - [The Playtest](https://netmobster.github.io/seren/playtest.html): the full played session, six scenes, with the player's own typed turns beside it and every roll in code blocks.
 - [The Source](https://netmobster.github.io/seren/source.html): a claims table. Each row is a claim first and the file that settles it second, including the claims the files do not settle.
 - [The Source / Files](https://netmobster.github.io/seren/source-files.html): every published file with a line on what it is, plus nine things deliberately held back with the reason for each.
-- [The Source / Schemas](https://netmobster.github.io/seren/source-schemas.html): the eleven template types in three layers - rules reference, templates that get filled in, runtime state. Includes two known gaps.
+- [The Source / Schemas](https://netmobster.github.io/seren/source-schemas.html): the fourteen template types in three layers - rules reference, templates that get filled in, runtime state. Includes two known gaps.
 - [About](https://netmobster.github.io/seren/about.html): project genesis and a timeline reconstructed from commits, plus a closing section written from the Claude Code side.
 - [Seren Table demo](https://netmobster.github.io/seren/table-demo.html): interactive concept mockup, eight panels, tabs work, static data.
 

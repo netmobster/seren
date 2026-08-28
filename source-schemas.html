@@ -6,10 +6,10 @@
   <base href="/seren/">
   <link rel="canonical" href="https://netmobster.github.io/seren/source-schemas.html">
   <title>SEREN AI &mdash; Schemas</title>
-  <meta name="description" content="The eleven template types the system is built on, in three layers: rules reference, templates that get filled in, and runtime state.">
+  <meta name="description" content="The fourteen template types the system is built on, in three layers: rules reference, templates that get filled in, and runtime state.">
   <meta name="theme-color" content="#100d0b">
   <meta property="og:title" content="SEREN AI &mdash; Schemas">
-  <meta property="og:description" content="The eleven template types the system is built on, in three layers: rules reference, templates that get filled in, and runtime state.">
+  <meta property="og:description" content="The fourteen template types the system is built on, in three layers: rules reference, templates that get filled in, and runtime state.">
   <meta property="og:url" content="https://netmobster.github.io/seren/source-schemas.html">
   <meta property="og:type" content="article">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@
   <section class="page-box-6">
     <div class="wrap">
       <h1 class="page-title-3">Schemas.</h1>
-      <p class="page-display-5">Eleven template types, in three layers. Everything the system fills in has a declared shape, and the shape is a file you can read.</p>
+      <p class="page-display-5">Fourteen template types, in three layers. Everything the system fills in has a declared shape, and the shape is a file you can read.</p>
       <p class="page-text-3 pt-lede"><b>This is the part that is portable.</b> None of it is about dungeons. A schema here is a markdown file with YAML front matter and prose underneath &mdash; structured enough to validate and query, readable enough that a model with no prior knowledge of the project can act on it without a lookup table.</p>
       <p class="page-text-3 pt-lede" style="margin-top:14px"><b>Counted 28 August 2026, and in flux.</b> Two of these have known gaps, named below rather than tidied away.</p>
 
@@ -55,6 +55,63 @@
         <a href="source-files.html" class="subnav-btn">Files</a>
         <a href="source-schemas.html" class="subnav-btn is-here">Schemas</a>
       </nav>
+    </div>
+  </section>
+
+
+  <!-- ============ THE NARRATIVE LAYER ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">What is actually different here</div>
+      <h2 class="layers-title">Everyone modelled the mechanical layer. This one models the other half.</h2>
+      <p class="text-4 pt-lede">Virtual tabletops have had rich schemas for years &mdash; hit points, armour class, tokens, initiative order. <b>Nobody built a schema for what a person wants, who knows what, what closure looks like, or what this NPC does instead of fighting</b>, because a human dungeon master held all of that in their head and no file was needed.</p>
+      <p class="text-4 pt-lede" style="margin-top:18px"><b>The mechanical half is a solved problem you could copy out of an SRD in an afternoon.</b> The <code>wants</code> / <code>knows</code> / <code>visibility</code> / <code>exit</code> half is the part that is not copyable, and it is most of what is on this page.</p>
+
+      <h3 class="label-wide" style="margin-top:36px">Commitment &times; attachment</h3>
+      <p class="text-4" style="margin-top:12px">Three files hold everything the world is doing that the party has not seen. They are separated by <b>whether the thing is committed to</b> and <b>what it is attached to</b>:</p>
+
+      <div class="tbl-scroll">
+      <table class="ftbl">
+        <tr><th style="width:16%">File</th><th style="width:14%">Committed?</th><th style="width:20%">Attached to</th><th>Shape</th></tr>
+        <tr><td><b><code>fronts.md</code></b></td><td><b>Yes</b></td><td>a faction</td>
+          <td><em>&ldquo;Agendas, never plot.&rdquo;</em> <code>wants</code> &middot; <code>doing</code> &middot; <code>clock</code> &middot; <code>if full</code>. <b>The clock advances when the party is elsewhere</b>, and <code>if full</code> must describe what changes in the world &mdash; never &ldquo;the party loses&rdquo;. Two to four at t=0. <b>&ldquo;A front with no clock is a rumour.&rdquo;</b></td></tr>
+        <tr><td><b><code>secrets.md</code></b></td><td><b>Yes</b></td><td>one person</td>
+          <td>What this character is hiding, and what they want that they have not said. <b>DM-side only</b> &mdash; this is the file <a href="table.html" class="dust">The Table</a> leaked from once in review and now bans globally.</td></tr>
+        <tr><td><b><code>ideas.md</code></b></td><td><b>No</b></td><td><b>nothing</b></td>
+          <td><code>idea</code> &middot; <code>seeded</code> &middot; <code>triggers</code> &middot; <code>status: untriggered</code>. <b>&ldquo;Nothing here is true yet.&rdquo;</b> A hundred of these cost nothing and none of them constrain the world. <b>The moment one is used it moves to canon with provenance and is deleted from this file in the same breath</b> &mdash; an idea left in the pool gets introduced twice.</td></tr>
+      </table>
+      </div>
+      <p class="text-4" style="margin-top:16px"><b>The third row is the one that does not exist elsewhere.</b> Improv banks and prep lists are old; giving the bank a lifecycle &mdash; uncommitted, promoted on use, deleted on promotion &mdash; is what stops it becoming a second canon that quietly disagrees with the first.</p>
+
+      <h3 class="label-wide" style="margin-top:40px">The same primitive, arrived at three times</h3>
+      <p class="text-4" style="margin-top:12px"><code>grudge_seed</code> is a fact about an antagonist. <code>grudge</code> is that fact made specific to <em>this</em> party, filled in at campaign creation, and the schema states outright that the seed is <b>not</b> a substitute for it. That is the template-and-instance split running <b>inside a single file</b> &mdash; the same shape as <code>variant_of</code> on a character sheet, and the same shape as a module versus a played campaign. <b>Three layers of the system independently landed on the same primitive.</b></p>
+
+      <h3 class="label-wide" style="margin-top:40px">Every schema carries its own anti-pattern</h3>
+      <p class="text-4" style="margin-top:12px">This is the part that transfers. Each schema states, in its own text, the failure it exists to prevent:</p>
+      <div class="tbl-scroll">
+      <table class="ftbl">
+        <tr><th style="width:22%">Schema</th><th>The named failure</th></tr>
+        <tr><td><b>Role table</b></td><td>20&ndash;30 lines and it stays that way. <em>&ldquo;A role that grows past that is being written as a character, which is the mistake this directory exists to prevent.&rdquo;</em></td></tr>
+        <tr><td><b>Antagonist</b></td><td>Six is <em>&ldquo;a ceiling, not a starting number. Twenty pre-built nemeses is twenty strangers.&rdquo;</em></td></tr>
+        <tr><td><b>Character sheet</b></td><td>Where a value is derived rather than copied, say so &mdash; <em>&ldquo;the derivation is auditable, an assertion isn&rsquo;t.&rdquo;</em> Write <code>TODO</code> rather than a guess, because an invented modifier becomes a wrong roll in play, silently, forever.</td></tr>
+        <tr><td><b>Facts</b></td><td><em>&ldquo;<code>false</code> is the one people delete. Don&rsquo;t.&rdquo;</em> A party that is confidently wrong is the most playable state in the game, and it is unrecoverable if nobody wrote it down.</td></tr>
+        <tr><td><b>Hostile roles</b></td><td>Every one carries a way out that is not a fight, and <code>plausible_combat</code> says whether this person would even swing. <b>Both exist to stop the model reaching for the resolution it is most fluent at.</b></td></tr>
+      </table>
+      </div>
+      <p class="text-4" style="margin-top:16px"><b>These are not shapes. They are arguments about where a model will fail</b> &mdash; which is precisely why they work on a model, since it can apply them to cases the schema never anticipated.</p>
+    </div>
+  </section>
+
+  <!-- ============ UNEXERCISED ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">The honest part</div>
+      <h2 class="layers-title">This is the largest block of unvalidated design in the project, and it is the block that looks most finished.</h2>
+      <p class="text-4 pt-lede">Almost none of what is above has been exercised. <b>One session, a third-party adventure, other people&rsquo;s NPCs.</b> The antagonist schema runs to 194 lines and the six nemeses built against it belong to a world that has never been played. There are 42 role templates and the played session plausibly touched two or three.</p>
+      <div class="nope" style="margin-top:24px">
+        <p class="text-4" style="margin:0"><b>Nothing tests whether a role template changes the output.</b> The persona format carries a falsifiable prediction &mdash; a sentence a player who never read the file could check. <b>Role templates have no equivalent</b>, so &ldquo;a role biases what the model invents, so the fifteenth villager does not sound like the first&rdquo; is currently an assertion. <b>The test is cheap and obvious:</b> generate five villagers with the template and five without, and see whether a reader can tell which is which. It either validates 42 files or says the number should have been six.</p>
+      </div>
+      <p class="text-4 pt-lede" style="margin-top:24px">Until that runs, treat this page as <b>a design that is internally consistent and externally unproven.</b> Which is roughly the same sentence as the one on <a href="source.html" class="dust">the overview</a> about what the ledger does and does not settle.</p>
     </div>
   </section>
 
@@ -155,6 +212,15 @@
         <tr><td><b><code>party.md</code></b></td>
           <td>Who is here, where, current status and outcome, initiative, foes, beats.</td>
           <td><a href="source/state-formats.md" class="dust">&sect;4</a></td></tr>
+        <tr><td><b><code>fronts.md</code></b></td>
+          <td>What factions want and are doing, each with a clock that advances <b>while the party is elsewhere.</b> Agendas, never plot.</td>
+          <td><a href="source/architecture.md" class="dust">&sect;6</a></td></tr>
+        <tr><td><b><code>ideas.md</code></b></td>
+          <td>Uncommitted possibilities. <b>Not canon, not true yet</b>, deleted on promotion so nothing gets introduced twice.</td>
+          <td><a href="source/campaign-start.md" class="dust">campaign-start</a></td></tr>
+        <tr><td><b><code>secrets.md</code></b></td>
+          <td>Per-character, DM-side. <b>Never rendered to any panel</b>, by the global rule on <a href="table.html" class="dust">The Table</a>.</td>
+          <td><a href="source/npc-containers.md" class="dust">npc-containers</a></td></tr>
         <tr><td><b>Canon containers</b></td>
           <td>Characters, locations, antagonists. <b>Link-only and empty at t=0 by design</b> &mdash; people accrete on contact rather than being populated in advance.</td>
           <td><a href="schemas/canon-containers.md" class="dust">schema</a> &middot; <a href="source/npc-containers.md" class="dust">detail</a></td></tr>
@@ -187,7 +253,7 @@
       </svg>
       <span class="meta-4">Seren&nbsp;AI</span>
     </div>
-    <div class="label">11 schemas &middot; 3 layers &middot; 2 known gaps &middot; counted 28 Aug 2026</div>
+    <div class="label">14 schemas &middot; 3 layers &middot; 2 known gaps &middot; counted 28 Aug 2026</div>
   </footer>
 
 </div>
