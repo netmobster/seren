@@ -1803,3 +1803,66 @@ table.pt-tbl td b { color:var(--bone); }
 .tbl-scroll{overflow-x:auto}
 .nope{border-left:2px solid var(--oxblood);padding-left:18px;margin:18px 0}
 .nope b{color:var(--bone)}
+
+
+/* ==========================================================================
+   LINK LEGIBILITY + SUBNAV PLACEMENT — added 2026-08-28
+   Links were copper-on-ink with no underline, which reads as emphasis rather
+   than as something clickable. Now bold and underlined everywhere they appear
+   in running copy; button-shaped things opt out below.
+   ========================================================================== */
+
+a {
+  font-weight:700;
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+  text-decoration-color:rgba(176,122,78,.55);
+}
+a:hover {
+  text-decoration-color:var(--bone);
+}
+/* inline links in body copy sit on the dust colour but still read as links */
+.dust {
+  color:var(--dust);
+  text-decoration-color:rgba(163,154,143,.55);
+}
+.dust:hover { color:var(--bone); text-decoration-color:var(--bone); }
+
+/* things that are buttons, not links */
+.nav-btn,
+.subnav-btn,
+.nav-cta,
+.site-footer a,
+.row-5 a,
+.tb-caps a {
+  text-decoration:none;
+}
+.nav-btn:hover, .subnav-btn:hover { text-decoration:none; }
+.tb-caps a { font-weight:400; border-bottom:1px solid var(--edge); }
+
+/* the subnav now sits directly under the main nav as its own bar */
+.subnav-bar {
+  border-bottom:1px solid var(--hair);
+  background:rgba(0,0,0,.16);
+}
+.subnav-bar .wrap { padding:0 var(--gutter); }
+.subnav {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0;
+  padding:12px 0;
+  border-top:0;
+}
+
+/* MOBILE NAV BUG: the old rule hid every header link that was not .nav-cta,
+   and the buttons use .nav-btn-key - so the whole nav vanished under 560px.
+   Keep the nav, let it wrap. */
+@media (max-width: 560px) {
+  .site-header nav a:not(.nav-cta) { display:inline-block; }
+  .site-header nav { gap:6px; }
+  .nav-btn { padding:6px 9px; font-size:9.5px; letter-spacing:.1em; }
+  .subnav { padding:10px 0; }
+  .subnav-lab { display:none; }
+}
