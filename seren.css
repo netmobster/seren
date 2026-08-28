@@ -1761,3 +1761,17 @@ table.pt-tbl td b { color:var(--bone); }
 
 .pt-two { display:grid; gap:28px; }
 @media (min-width:900px) { .pt-two { grid-template-columns:1fr 1fr; } }
+
+/* the player's own turns, verbatim */
+.pt-jay {
+  margin:0 0 24px; padding:16px 20px;
+  border:1px solid rgba(127,155,140,.34); border-left:3px solid var(--verdigris);
+  border-radius:2px; background:rgba(127,155,140,.05);
+}
+.pt-jay .who {
+  display:block; margin-bottom:9px; font-family:var(--mono); font-size:10px;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--verdigris-hi);
+}
+.pt-jay p { margin:0 0 10px; font-family:var(--sans); font-size:15.5px; line-height:1.66; color:var(--bone); }
+.pt-jay p:last-child { margin-bottom:0; }
+.pt-jay em { color:var(--dust); font-style:italic; }
