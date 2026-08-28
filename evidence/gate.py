@@ -8,6 +8,7 @@ gate.py - the write-gate for ledger.jsonl
     python scripts/gate.py append <ledger.jsonl> '<json entry>'
     python scripts/gate.py check  <file.jsonl>                   # validate a whole file
     python scripts/gate.py count  <file.jsonl>                   # entries by type
+    python scripts/gate.py canon  <canon-dir>                   # provenance on every file
 
 APPEND validates one entry and writes it only if it passes. CHECK validates a
 whole file and touches nothing.
@@ -363,9 +364,93 @@ def scan(path):
     return count, refusals
 
 
-def report(refusals, prefix="REFUSED"):
+
+# ---------------------------------------------------------------------------
+# CANON - provenance, the one rule that had no control.
+#
+# canon/README.md: "Every file here records where it came from, when, and by
+# what route. A canon fact with no source is a fact nobody can audit, and this
+# directory is exactly where an unsourced assertion does the most damage."
+#
+# That rule was enforced by nothing. gate.py validated JSONL and never opened a
+# markdown file, so the directory the DM treats as TRUE was protected by the
+# class of rule DM.md S2 already says does not hold. An instruction is not a
+# control - it cost two lost dice rolls to learn that the first time.
+#
+# WHAT THIS FOUND ON ITS FIRST RUN, 2026-08-28: nine of nine files already
+# carried a source and a date. The gap was real and nothing had gone through
+# it. Both halves are worth stating - the runs were honest, and the gate was
+# not the reason.
+#
+# IT CHECKS THE CONVENTION THE REPO ALREADY USES, not one invented here.
+# Provenance in canon/ is a prose "**Source:**" line, not front matter, and
+# rewriting nine compliant files to satisfy a new validator would be the tail
+# wagging the dog.
+# ---------------------------------------------------------------------------
+
+CANON_SOURCE = re.compile(r'^\s*(?:\*\*Source:?\*\*|\|\s*\*\*source\*\*\s*\||source:)',
+                          re.M | re.I)
+CANON_DATE = re.compile(r'20\d\d-\d\d-\d\d')
+
+
+def scan_canon(root):
+    """Every .md under root must say where it came from and when.
+
+    Returns (count, [Refused], [(path, note)] warnings).
+
+    REFUSED  - no source line, or no date. The spec calls provenance
+               non-negotiable, so these are refusals.
+    WARNING  - a derived file that cites no capture in archive/. The spec says
+               "derived files cite the capture", which is softer than the
+               source requirement and is not yet universal in the tree.
+    """
+    refusals, warnings, count = [], [], 0
+    for dirpath, _dirs, files in os.walk(root):
+        for name in sorted(files):
+            if not name.endswith(".md") or name == "README.md":
+                continue
+            path = os.path.join(dirpath, name)
+            rel = os.path.relpath(path, root).replace("\\", "/")
+            count += 1
+            try:
+                text = open(path, encoding="utf-8").read()
+            except OSError as err:
+                refusals.append(Refused(rel, f"cannot read - {err}", "canon/README.md"))
+                continue
+
+            if not CANON_SOURCE.search(text):
+                refusals.append(Refused(
+                    rel,
+                    "no provenance - canon files record where they came from. "
+                    "Add a `**Source:**` line naming the origin",
+                    "canon/README.md"))
+                continue
+
+            if not CANON_DATE.search(text[:2000]):
+                refusals.append(Refused(
+                    rel,
+                    "provenance has no date - `where it came from` and `when` "
+                    "are both required. Add an ISO date near the source line",
+                    "canon/README.md"))
+                continue
+
+            in_archive = rel.startswith("archive/") or "/archive/" in "/" + rel
+            if not in_archive and "archive/" not in text:
+                warnings.append((rel, "derived file cites no capture in archive/"))
+    return count, refusals, warnings
+
+
+def report(refusals, prefix="REFUSED", spec=SPEC):
+    """`spec` is which document the refusal is quoting.
+
+    It is a parameter because canon refusals quote canon/README.md, not the
+    state-formats spec. A refusal that names a document which does not contain
+    the rule it is enforcing is worse than no citation - gate.py cited [S2.3]
+    for a rule S2.3 did not contain for several hours on 2026-08-28.
+    """
     for r in refusals:
-        print(f"{prefix}  {r.entry_id}: {r.why}  [{SPEC} {r.section}]", file=sys.stderr)
+        where = f"{spec} {r.section}".strip()
+        print(f"{prefix}  {r.entry_id}: {r.why}  [{where}]", file=sys.stderr)
 
 
 def main(argv):
@@ -480,6 +565,18 @@ def main(argv):
             fh.write(json.dumps(entry, ensure_ascii=False) + "\n")
         print("rolled  " + " ".join(str(d) for d in dice))
         print(f"logged  {nid}" + (f"  total {entry['total']}" if "total" in entry else ""))
+        return 0
+
+    if cmd == "canon":
+        count, refusals, warnings = scan_canon(path)
+        for rel, note in warnings:
+            print(f"WARNING  {rel}: {note}  [canon/README.md]", file=sys.stderr)
+        if refusals:
+            report(refusals, spec="")
+            print(f"\n{len(refusals)} of {count} canon files refused.", file=sys.stderr)
+            return 1
+        tail = f", {len(warnings)} warning(s)" if warnings else ""
+        print(f"{count} canon files, all carry source and date{tail}.")
         return 0
 
     if cmd == "count":

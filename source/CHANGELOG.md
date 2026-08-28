@@ -6,6 +6,47 @@ checking on the day any given ledger was written.
 
 ---
 
+## 2026-08-28 — `canon`, and the rule that had no control
+
+**External review, and it was right:** `canon/README.md` says *"every file here
+records where it came from, when, and by what route,"* and **nothing enforced
+it.** `gate.py` validated JSONL and had never opened a markdown file.
+
+> ### So the directory the DM treats as TRUE was protected by exactly the class of rule this project already knows does not hold.
+>
+> **An instruction is not a control.** That cost two narrated-but-unlogged dice
+> rolls to learn the first time.
+
+**`gate.py canon <dir>`** now walks every `.md` under a canon tree and refuses
+any file with no source line, or a source line with no date.
+
+### ⭐ What it found on its first run
+
+**Nine of nine files already carried a source and a date.** Five of them do not
+cite a capture in `archive/`, which the spec asks for in softer language, so
+those are warnings rather than refusals.
+
+**The gap was real and nothing had gone through it.** Both halves are worth
+stating plainly, exactly as with the verdict hole on the same day: the writing
+was honest, and the gate was not the reason.
+
+### It checks the convention the repo already uses
+
+Provenance in `canon/` is a prose `**Source:**` line, not front matter.
+**Rewriting nine compliant files to satisfy a new validator would be the tail
+wagging the dog**, so the checker reads what is there.
+
+### Also
+
+- **`report()` takes the spec it is quoting.** Canon refusals cite
+  `canon/README.md`; ledger refusals still cite `docs/state-formats.md`. ⚠️ The
+  first version of this command printed `[docs/state-formats.md canon/README]`
+  on a canon refusal — **a document that contains none of the rule being
+  enforced.** That is the same mistake as citing `[S2.3]` for a rule §2.3 did
+  not contain, made again on the same day it was written down.
+
+---
+
 ## 2026-08-28 — the verdict must match the arithmetic
 
 ⛔ **A reader downloaded the published validator and the published ledger, ran
