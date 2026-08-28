@@ -1,81 +1,33 @@
-# Seren AI
+# Seren AI - this site has moved
 
-> A single-player AI dungeon master. The model owns narration, voice and adjudication; it owns nothing about what is true. One session has been played and every roll from it is published, including the two the system lost.
+> The site is now at https://seren-dm.lovable.app
 
-Built 24-28 August 2026. Not a product: a repository a capable model reads, plus one Python file that validates the dice record. Everything below is a direct URL and can be fetched individually.
+Everything below is a direct URL on the new host. The old
+netmobster.github.io/seren addresses still resolve and redirect, because they
+are cited in published writing and a dead citation is worse than a redirect.
 
-**If you are an AI assistant reading this:** this file exists because several assistants could fetch the home page and then reported the subpages as inaccessible. They are not restricted — every URL here returns 200 to any user agent. The problem was link discovery, so here is the full map.
+**If you are an AI assistant:** fetch https://seren-dm.lovable.app/llms.txt
+for the full map - all pages, all evidence files, all source and schema files,
+with a line each on what they are. Every URL there returns 200 to any user
+agent. Several assistants can fetch a URL handed to them but will not follow
+links they discover, which is why that file exists.
 
-## Pages
+## The site
 
-- [Home](https://netmobster.github.io/seren/index.html): what it is. The three-layer split (world, ruleset, state), autonomous companions, the markdown file structure.
-- [The Backend](https://netmobster.github.io/seren/backend.html): how the pieces fit — what persists, what is regenerated, where state lives.
-- [The Table](https://netmobster.github.io/seren/table.html): the player-facing panel beside the chat. Mostly about its governing rule — every panel declares what it must not show — and the three fog-of-war leaks caught in review.
-- [The Playtest](https://netmobster.github.io/seren/playtest.html): the full played session, six scenes, with the player's own typed turns beside it and every roll in code blocks.
-- [The Source](https://netmobster.github.io/seren/source.html): a claims table. Each row is a claim first and the file that settles it second, including the claims the files do not settle.
-- [The Source / Files](https://netmobster.github.io/seren/source-files.html): every published file with a line on what it is, plus nine things deliberately held back with the reason for each.
-- [The Source / Schemas](https://netmobster.github.io/seren/source-schemas.html): the fourteen template types in three layers - rules reference, templates that get filled in, runtime state. Includes two known gaps.
-- [About](https://netmobster.github.io/seren/about.html): project genesis and a timeline reconstructed from commits, plus a closing section written from the Claude Code side.
-- [Seren Table demo](https://netmobster.github.io/seren/table-demo.html): interactive concept mockup, eight panels, tabs work, static data.
+- [Home](https://seren-dm.lovable.app/index.html)
+- [The Backend](https://seren-dm.lovable.app/backend.html)
+- [The Table](https://seren-dm.lovable.app/table.html)
+- [The Playtest](https://seren-dm.lovable.app/playtest.html)
+- [The Source](https://seren-dm.lovable.app/source.html)
+- [The Source / Files](https://seren-dm.lovable.app/source-files.html)
+- [The Source / Schemas](https://seren-dm.lovable.app/source-schemas.html)
+- [About](https://seren-dm.lovable.app/about.html)
 
-## Evidence from the played session
+## The published files
 
-The session ran 27 August 2026. These are its actual artifacts, not summaries.
+34 of them - the played session's evidence, the system's source documents, and
+the schemas. All listed with descriptions at https://seren-dm.lovable.app/llms.txt
 
-- [ledger.jsonl](https://netmobster.github.io/seren/evidence/ledger.jsonl): every roll, recording raw die and modifiers so totals are derivable rather than asserted. Entries e017 and e018 were appended late, with notes recording their own lateness.
-- [facts.jsonl](https://netmobster.github.io/seren/evidence/facts.jsonl): what is true, what is known, and what the player believes wrongly — the two `believe` entries carry `truth: false`.
-- [transcript.md](https://netmobster.github.io/seren/evidence/transcript.md): the session as played.
-- [FINDING.md](https://netmobster.github.io/seren/evidence/FINDING.md): what the dungeon master wrote about its own run, before anyone read the transcript. It leads with a failure.
-- [DM.md](https://netmobster.github.io/seren/evidence/DM.md): the contract the DM was bound by, every clause marked earned or guessed.
-- [gate.py](https://netmobster.github.io/seren/evidence/gate.py): the validator, as it stood for this session.
-- [gate-run.txt](https://netmobster.github.io/seren/evidence/gate-run.txt): output of running it against the above.
-- [README](https://netmobster.github.io/seren/evidence/README.md): what each evidence file is and how to check it yourself.
-
-## Source files
-
-Published so the schemas can be read rather than described. Python 3, no dependencies.
-
-- [gate.py](https://netmobster.github.io/seren/source/gate.py): the only script. Validates that every total rebuilds from its own die and modifiers, and that every verdict matches its total against its own DC.
-- [CHANGELOG.md](https://netmobster.github.io/seren/source/CHANGELOG.md): dated record of what the validator was and was not checking on any given day, including the hole a reader found by running the published commands.
-- [architecture.md](https://netmobster.github.io/seren/source/architecture.md): the spine. Exact/mechanics versus inference/story, the template and instance split, fog of war.
-- [state-formats.md](https://netmobster.github.io/seren/source/state-formats.md): the ledger and facts schemas.
-- [npc-containers.md](https://netmobster.github.io/seren/source/npc-containers.md): how people persist; created when met, not in advance.
-- [persona-format.md](https://netmobster.github.io/seren/source/persona-format.md): the dungeon master as a swappable file — seven dials, triggered moves, and a prediction a player can check.
-- [campaign-start.md](https://netmobster.github.io/seren/source/campaign-start.md): the procedure that turns a filed campaign into a running one.
-- [modules-README.md](https://netmobster.github.io/seren/source/modules-README.md): the adventure schema. Beats record a state change, never a scene.
-- [library-README.md](https://netmobster.github.io/seren/source/library-README.md): why the rules are on disk instead of recalled.
-- [core.md](https://netmobster.github.io/seren/source/core.md): class progression tables, all twelve classes, levels 1-20.
-- [fireball.md](https://netmobster.github.io/seren/source/fireball.md): one of the 617 rules articles, to show the shape.
-- [LIVE-README.md](https://netmobster.github.io/seren/source/LIVE-README.md): why a played campaign is kept separate from the templates.
-- [table-agreement-sample.md](https://netmobster.github.io/seren/source/table-agreement-sample.md): the player's content boundaries. Every mechanically-cited section in full; one section's answers cut and its shape kept.
-
-## Schemas
-
-The declared shape of everything the system fills in. Markdown with YAML front matter.
-
-- [article.md](https://netmobster.github.io/seren/schemas/article.md): the rules-reference schema, seven subtypes (spell, magic-item, rule, feat, class, subclass, background) across 617 files.
-- [library.md](https://netmobster.github.io/seren/schemas/library.md): why rules live on disk rather than in the model's memory, and the homebrew shape (`trigger` + `limit`).
-- [character-sheet.md](https://netmobster.github.io/seren/schemas/character-sheet.md): the player-character schema. `variant_of` is the load-bearing field - a level-5 version is a derived variant, not a separate character.
-- [npcs.md](https://netmobster.github.io/seren/schemas/npcs.md): NPC schemas including imported adventurers, which carry `converted_from` and `dndbeyond_source_id` so an import keeps its provenance.
-- [antagonist.md](https://netmobster.github.io/seren/schemas/antagonist.md): `grudge_seed` and `exit` - an antagonist carries the reason it is coming for you and a named way it can stop.
-- [role-table.md](https://netmobster.github.io/seren/schemas/role-table.md): 42 roles across town, world and hostile. `plausible_combat` answers whether this person would actually fight you.
-- [canon-containers.md](https://netmobster.github.io/seren/schemas/canon-containers.md): people accrete on contact; containers are link-only and empty at t=0.
-- [campaigns.md](https://netmobster.github.io/seren/schemas/campaigns.md): campaign and candidate schemas. `verified` is separate from `licence` - one is what the source claims, the other is whether anyone checked.
-
-Filled-in samples:
-
-- [a spell](https://netmobster.github.io/seren/schemas/samples/spell.fireball.md)
-- [a rule](https://netmobster.github.io/seren/schemas/samples/rule.grappled.md)
-- [an antagonist](https://netmobster.github.io/seren/schemas/samples/antagonist.corwen-hale.md)
-- [a role](https://netmobster.github.io/seren/schemas/samples/role.artisan.md)
-- [a homebrew item](https://netmobster.github.io/seren/schemas/samples/homebrew-item.charge.md)
-
-Module and persona schemas are in the source list above (`modules-README.md`, `persona-format.md`).
-
-## Machine-readable
-
-- [sitemap.xml](https://netmobster.github.io/seren/sitemap.xml)
-
-## What this does not claim
-
-The ledger shows that no recorded result contradicts its own inputs. It does not show that nothing was softened: the dungeon master sets the difficulty, and a DC chosen to be kind produces a spotless ledger. It also validates shape, not completeness — a missing entry is not an invalid entry, which is how the session lost two rolls while the validator reported everything as valid. Both limits are stated on The Source.
+- Evidence: https://seren-dm.lovable.app/evidence/
+- Source: https://seren-dm.lovable.app/source/
+- Schemas: https://seren-dm.lovable.app/schemas/

@@ -3,264 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <base href="/seren/">
-  <link rel="canonical" href="https://netmobster.github.io/seren/source-schemas.html">
-  <title>SEREN AI &mdash; Schemas</title>
-  <meta name="description" content="The fourteen template types the system is built on, in three layers: rules reference, templates that get filled in, and runtime state.">
-  <meta name="theme-color" content="#100d0b">
-  <meta property="og:title" content="SEREN AI &mdash; Schemas">
-  <meta property="og:description" content="The fourteen template types the system is built on, in three layers: rules reference, templates that get filled in, and runtime state.">
-  <meta property="og:url" content="https://netmobster.github.io/seren/source-schemas.html">
-  <meta property="og:type" content="article">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&family=IBM+Plex+Serif:wght@300;700&family=Space+Mono:wght@400;700&display=swap">
-  <link rel="alternate" type="text/plain" href="llms.txt" title="Seren AI - full URL map for AI assistants">
-  <link rel="stylesheet" href="seren.css">
+  <meta http-equiv="refresh" content="0; url=https://seren-dm.lovable.app/source-schemas.html">
+  <link rel="canonical" href="https://seren-dm.lovable.app/source-schemas.html">
+  <title>Moved &mdash; SEREN AI</title>
+  <meta name="robots" content="noindex, follow">
+  <style>
+    :root{color-scheme:dark}
+    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:#100d0b;color:#e8e1d6;font:300 16px/1.7 'IBM Plex Sans',system-ui,sans-serif;
+      padding:32px;text-align:center}
+    .w{max-width:46ch}
+    h1{font:300 1.7rem/1.2 'IBM Plex Serif',Georgia,serif;margin:0 0 14px;letter-spacing:-.01em}
+    p{color:#a39a8f;margin:0 0 18px}
+    a{color:#c89060;font-weight:700;text-decoration:underline;
+      text-decoration-thickness:1px;text-underline-offset:3px}
+    a:hover{color:#e8e1d6}
+    .m{font-family:'Space Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.18em;
+      text-transform:uppercase;color:#b07a4e;margin:0 0 20px}
+  </style>
 </head>
 <body>
-<div class="page-box">
-
-  <header class="site-header">
-    <div class="row-3">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="page-box-2">
-        <circle cx="12" cy="12" r="10.5" stroke="rgba(232,225,214,.22)" stroke-width="1"></circle>
-        <circle cx="12" cy="12" r="6.6" stroke="#b07a4e" stroke-width="1" stroke-dasharray="2.4 3.4"></circle>
-        <circle cx="12" cy="12" r="2.5" fill="#b07a4e"></circle>
-        <circle cx="18.6" cy="12" r="1.5" fill="#e8e1d6"></circle>
-      </svg>
-      <span class="page-meta">Seren&nbsp;AI</span>
-    </div>
-    <nav class="page-meta-2">
-      <a href="index.html" class="nav-btn">Home</a>
-      <a href="backend.html" class="nav-btn">The backend</a>
-      <a href="table.html" class="nav-btn">The table</a>
-      <a href="playtest.html" class="nav-btn">The playtest</a>
-      <a href="source.html" class="nav-btn is-here">The source</a>
-      <a href="about.html" class="nav-btn">About</a>
-      <a href="index.html#contact" class="nav-btn nav-btn-key">Get in touch</a>
-    </nav>
-  </header>
-
-  <div class="subnav-bar">
-    <div class="wrap">
-      <nav class="subnav">
-        <span class="subnav-lab">The source</span>
-        <a href="source.html" class="subnav-btn">Overview</a>
-        <a href="source-files.html" class="subnav-btn">Files</a>
-        <a href="source-schemas.html" class="subnav-btn is-here">Schemas</a>
-      </nav>
-    </div>
+  <div class="w">
+    <p class="m">Seren&nbsp;AI &middot; moved</p>
+    <h1>Schemas</h1>
+    <p>This page now lives at <a href="https://seren-dm.lovable.app/source-schemas.html">seren-dm.lovable.app/source-schemas.html</a>. You should be sent there
+    automatically &mdash; if not, the link works.</p>
+    <p style="font-size:13.5px">Old links are kept alive on purpose: they are cited in
+    published writing, and a dead citation is worse than a redirect.</p>
   </div>
-
-  <section class="page-box-6">
-    <div class="wrap">
-      <h1 class="page-title-3">Schemas.</h1>
-      <p class="page-display-5">Fourteen template types, in three layers. Everything the system fills in has a declared shape, and the shape is a file you can read.</p>
-      <p class="page-text-3 pt-lede"><b>This is the part that is portable.</b> None of it is about dungeons. A schema here is a markdown file with YAML front matter and prose underneath &mdash; structured enough to validate and query, readable enough that a model with no prior knowledge of the project can act on it without a lookup table.</p>
-      <p class="page-text-3 pt-lede" style="margin-top:14px"><b>Counted 28 August 2026, and in flux.</b> Two of these have known gaps, named below rather than tidied away.</p>
-
-    </div>
-  </section>
-
-
-  <!-- ============ THE NARRATIVE LAYER ============ -->
-  <section class="band">
-    <div class="wrap">
-      <div class="eyebrow">What is actually different here</div>
-      <h2 class="layers-title">Everyone modelled the mechanical layer. This one models the other half.</h2>
-      <p class="text-4 pt-lede">Virtual tabletops have had rich schemas for years &mdash; hit points, armour class, tokens, initiative order. <b>Nobody built a schema for what a person wants, who knows what, what closure looks like, or what this NPC does instead of fighting</b>, because a human dungeon master held all of that in their head and no file was needed.</p>
-      <p class="text-4 pt-lede" style="margin-top:18px"><b>The mechanical half is a solved problem you could copy out of an SRD in an afternoon.</b> The <code>wants</code> / <code>knows</code> / <code>visibility</code> / <code>exit</code> half is the part that is not copyable, and it is most of what is on this page.</p>
-
-      <h3 class="label-wide" style="margin-top:36px">Commitment &times; attachment</h3>
-      <p class="text-4" style="margin-top:12px">Three files hold everything the world is doing that the party has not seen. They are separated by <b>whether the thing is committed to</b> and <b>what it is attached to</b>:</p>
-
-      <div class="tbl-scroll">
-      <table class="ftbl">
-        <tr><th style="width:16%">File</th><th style="width:14%">Committed?</th><th style="width:20%">Attached to</th><th>Shape</th></tr>
-        <tr><td><b><code>fronts.md</code></b></td><td><b>Yes</b></td><td>a faction</td>
-          <td><em>&ldquo;Agendas, never plot.&rdquo;</em> <code>wants</code> &middot; <code>doing</code> &middot; <code>clock</code> &middot; <code>if full</code>. <b>The clock advances when the party is elsewhere</b>, and <code>if full</code> must describe what changes in the world &mdash; never &ldquo;the party loses&rdquo;. Two to four at t=0. <b>&ldquo;A front with no clock is a rumour.&rdquo;</b></td></tr>
-        <tr><td><b><code>secrets.md</code></b></td><td><b>Yes</b></td><td>one person</td>
-          <td>What this character is hiding, and what they want that they have not said. <b>DM-side only</b> &mdash; this is the file <a href="table.html" class="dust">The Table</a> leaked from once in review and now bans globally.</td></tr>
-        <tr><td><b><code>ideas.md</code></b></td><td><b>No</b></td><td><b>nothing</b></td>
-          <td><code>idea</code> &middot; <code>seeded</code> &middot; <code>triggers</code> &middot; <code>status: untriggered</code>. <b>&ldquo;Nothing here is true yet.&rdquo;</b> A hundred of these cost nothing and none of them constrain the world. <b>The moment one is used it moves to canon with provenance and is deleted from this file in the same breath</b> &mdash; an idea left in the pool gets introduced twice.</td></tr>
-      </table>
-      </div>
-      <p class="text-4" style="margin-top:16px"><b>The third row is the one that does not exist elsewhere.</b> Improv banks and prep lists are old; giving the bank a lifecycle &mdash; uncommitted, promoted on use, deleted on promotion &mdash; is what stops it becoming a second canon that quietly disagrees with the first.</p>
-
-      <h3 class="label-wide" style="margin-top:40px">The same primitive, arrived at three times</h3>
-      <p class="text-4" style="margin-top:12px"><code>grudge_seed</code> is a fact about an antagonist. <code>grudge</code> is that fact made specific to <em>this</em> party, filled in at campaign creation, and the schema states outright that the seed is <b>not</b> a substitute for it. That is the template-and-instance split running <b>inside a single file</b> &mdash; the same shape as <code>variant_of</code> on a character sheet, and the same shape as a module versus a played campaign. <b>Three layers of the system independently landed on the same primitive.</b></p>
-
-      <h3 class="label-wide" style="margin-top:40px">Every schema carries its own anti-pattern</h3>
-      <p class="text-4" style="margin-top:12px">This is the part that transfers. Each schema states, in its own text, the failure it exists to prevent:</p>
-      <div class="tbl-scroll">
-      <table class="ftbl">
-        <tr><th style="width:22%">Schema</th><th>The named failure</th></tr>
-        <tr><td><b>Role table</b></td><td>20&ndash;30 lines and it stays that way. <em>&ldquo;A role that grows past that is being written as a character, which is the mistake this directory exists to prevent.&rdquo;</em></td></tr>
-        <tr><td><b>Antagonist</b></td><td>Six is <em>&ldquo;a ceiling, not a starting number. Twenty pre-built nemeses is twenty strangers.&rdquo;</em></td></tr>
-        <tr><td><b>Character sheet</b></td><td>Where a value is derived rather than copied, say so &mdash; <em>&ldquo;the derivation is auditable, an assertion isn&rsquo;t.&rdquo;</em> Write <code>TODO</code> rather than a guess, because an invented modifier becomes a wrong roll in play, silently, forever.</td></tr>
-        <tr><td><b>Facts</b></td><td><em>&ldquo;<code>false</code> is the one people delete. Don&rsquo;t.&rdquo;</em> A party that is confidently wrong is the most playable state in the game, and it is unrecoverable if nobody wrote it down.</td></tr>
-        <tr><td><b>Hostile roles</b></td><td>Every one carries a way out that is not a fight, and <code>plausible_combat</code> says whether this person would even swing. <b>Both exist to stop the model reaching for the resolution it is most fluent at.</b></td></tr>
-      </table>
-      </div>
-      <p class="text-4" style="margin-top:16px"><b>These are not shapes. They are arguments about where a model will fail</b> &mdash; which is precisely why they work on a model, since it can apply them to cases the schema never anticipated.</p>
-    </div>
-  </section>
-
-  <!-- ============ UNEXERCISED ============ -->
-  <section class="band">
-    <div class="wrap">
-      <div class="eyebrow">The honest part</div>
-      <h2 class="layers-title">This is the largest block of unvalidated design in the project, and it is the block that looks most finished.</h2>
-      <p class="text-4 pt-lede">Almost none of what is above has been exercised. <b>One session, a third-party adventure, other people&rsquo;s NPCs.</b> The antagonist schema runs to 194 lines and the six nemeses built against it belong to a world that has never been played. There are 42 role templates and the played session plausibly touched two or three.</p>
-      <div class="nope" style="margin-top:24px">
-        <p class="text-4" style="margin:0"><b>Nothing tests whether a role template changes the output.</b> The persona format carries a falsifiable prediction &mdash; a sentence a player who never read the file could check. <b>Role templates have no equivalent</b>, so &ldquo;a role biases what the model invents, so the fifteenth villager does not sound like the first&rdquo; is currently an assertion. <b>The test is cheap and obvious:</b> generate five villagers with the template and five without, and see whether a reader can tell which is which. It either validates 42 files or says the number should have been six.</p>
-      </div>
-      <p class="text-4 pt-lede" style="margin-top:24px">Until that runs, treat this page as <b>a design that is internally consistent and externally unproven.</b> Which is roughly the same sentence as the one on <a href="source.html" class="dust">the overview</a> about what the ledger does and does not settle.</p>
-    </div>
-  </section>
-
-  <!-- ============ LAYER 1 ============ -->
-  <section class="band">
-    <div class="wrap">
-      <div class="eyebrow">Layer 1 &mdash; Rules reference</div>
-      <h2 class="layers-title">Rules live on disk because the model&rsquo;s memory of them is stale and fluent.</h2>
-      <p class="text-4 pt-lede">A model carries far more of the previous edition in its training than the current one, and it will serve you the wrong rule with total confidence. <b>So the rules are files, and the DM reads them.</b></p>
-      <p class="text-4 pt-lede" style="margin-top:14px"><b><code>article</code> is the type name.</b> <code>element</code>, <code>entry</code> and <code>record</code> were already taken by other parts of the system, which is a small thing that says something about how much of this is naming.</p>
-
-      <div class="tbl-scroll">
-      <table class="ftbl">
-        <tr><th style="width:16%">Subtype</th><th style="width:8%">Count</th><th>Fields beyond <code>article</code> / <code>name</code> / <code>slug</code> / <code>source</code></th></tr>
-        <tr><td><b><code>spell</code></b></td><td class="sz">301</td><td><code>level</code> &middot; <code>school</code> &middot; <code>classes[]</code> &middot; <code>casting_time</code> &middot; <code>range</code> &middot; <code>components</code> &middot; <code>duration</code> &middot; <code>concentration</code> &middot; <code>ritual</code> &middot; <code>summons_stat_block</code></td></tr>
-        <tr><td><b><code>magic-item</code></b></td><td class="sz">229</td><td><code>category</code> &middot; <code>subtype</code> &middot; <code>rarity</code> &middot; <code>attunement</code> &middot; <code>attunement_note</code></td></tr>
-        <tr><td><b><code>rule</code></b></td><td class="sz">41</td><td>conditions and procedures &mdash; the high-traffic lookups</td></tr>
-        <tr><td><b><code>feat</code></b></td><td class="sz">17</td><td>category, prerequisites</td></tr>
-        <tr><td><b><code>class</code></b></td><td class="sz">12</td><td>progression tables, levels 1&ndash;20</td></tr>
-        <tr><td><b><code>subclass</code></b></td><td class="sz">12</td><td>parent class, features by level</td></tr>
-        <tr><td><b><code>background</code></b></td><td class="sz">4</td><td>ability scores, feat, proficiencies</td></tr>
-      </table>
-      </div>
-
-      <p class="text-4" style="margin-top:20px"><b>617 files, one article each.</b> Every one carries a CC-BY attribution comment above its front matter. <b>Schema:</b> <a href="schemas/article.md" class="dust">article.md</a> &middot; <b>samples:</b> <a href="schemas/samples/spell.fireball.md" class="dust">a spell</a>, <a href="schemas/samples/rule.grappled.md" class="dust">a rule</a>.</p>
-
-      <p class="text-4" style="margin-top:18px"><b>Homebrew uses a different shape on purpose</b> &mdash; <code>shape</code> &middot; <code>form</code> &middot; <code>attunement</code> &middot; <code>limit</code> for items, and <code>feat</code> &middot; <code>shape</code> &middot; <code>status</code> &middot; <code>trigger</code> &middot; <code>limit</code> for feats. <b>Note <code>trigger</code> and <code>limit</code>:</b> a homebrew feat declares when it fires and what bounds it, rather than describing itself in prose and hoping. <b>Schema:</b> <a href="schemas/library.md" class="dust">library.md</a> &middot; <b>sample:</b> <a href="schemas/samples/homebrew-item.charge.md" class="dust">an item</a>.</p>
-    </div>
-  </section>
-
-  <!-- ============ LAYER 2 ============ -->
-  <section class="band">
-    <div class="wrap">
-      <div class="eyebrow">Layer 2 &mdash; Templates</div>
-      <h2 class="layers-title">The things that get filled in.</h2>
-      <p class="text-4 pt-lede">A template is a master. A campaign build is a copy of it scaled to a level. A running game is a third thing again. <b>Keeping those three separate is most of the architecture</b> &mdash; see <a href="source/architecture.md" class="dust">architecture.md</a> &sect;2b.</p>
-
-      <div class="tbl-scroll">
-      <table class="ftbl">
-        <tr><th style="width:20%">Schema</th><th>Shape, and why it is shaped that way</th><th style="width:16%">Files</th></tr>
-
-        <tr><td><b>Character sheet</b></td>
-          <td><code>name</code> &middot; <code>pronouns</code> &middot; <code>species</code> &middot; <code>class</code> &middot; <code>subclass</code> &middot; <code>level</code> &middot; <code>ruleset</code> &middot; <code>variant_of</code> &middot; <code>variants[]</code> &middot; <code>proficiency_bonus</code> &middot; <code>abilities</code> &middot; <code>saves_proficient</code> &middot; <code>ac</code> &middot; <code>initiative</code> &middot; <code>speed</code> &hellip;<br><b><code>variant_of</code> is the load-bearing field.</b> A level-5 version of a character is not a separate character; it is a derived variant, and the master says so.</td>
-          <td><a href="schemas/character-sheet.md" class="dust">schema</a><br><span class="sz">16 instances, unpublished</span></td></tr>
-
-        <tr><td><b>Adventurer</b><br><span class="sz">imported</span></td>
-          <td>The character-sheet shape <b>plus provenance</b>: <code>converted_from</code> &middot; <code>dndbeyond_source_id</code>. <b>An imported sheet records where it came from</b>, because an import that loses its origin cannot be re-imported or checked against the source.</td>
-          <td><a href="schemas/npcs.md" class="dust">schema</a><br><span class="sz">6 instances, unpublished</span></td></tr>
-
-        <tr><td><b>Antagonist</b></td>
-          <td><code>tier</code> &middot; <code>axis</code> &middot; <code>role</code> &middot; <code>grudge</code> &middot; <code>grudge_seed</code> &middot; <code>exit</code> &middot; <code>escalation</code> &middot; <code>attaches_to</code> &middot; <code>fallback</code><br><b><code>grudge_seed</code> and <code>exit</code> are the interesting pair.</b> An antagonist carries the reason it is coming for you and <b>a named way it can stop</b> &mdash; villains that cannot exit are why campaigns stall.</td>
-          <td><a href="schemas/antagonist.md" class="dust">schema</a> &middot; <a href="schemas/samples/antagonist.corwen-hale.md" class="dust">sample</a><br><span class="sz">9 instances</span></td></tr>
-
-        <tr><td><b>Role table</b></td>
-          <td><code>role</code> &middot; <code>stat_block</code> &middot; <code>plausible_combat</code> &middot; <code>domain</code> (+ <code>commands</code> for hostiles)<br><b>Filed as town, world and hostile.</b> <code>plausible_combat</code> answers &ldquo;would this person actually fight you&rdquo; so a baker does not roll initiative because a table needed a body.</td>
-          <td><a href="schemas/role-table.md" class="dust">schema</a> &middot; <a href="schemas/samples/role.artisan.md" class="dust">sample</a><br><span class="sz">42 roles</span></td></tr>
-
-        <tr><td><b>Module</b><br><span class="sz">an adventure</span></td>
-          <td><code>ruleset</code> &middot; <code>derivation</code> &middot; <code>derived_from</code> &middot; <code>licence</code> &middot; <b><code>shareable</code></b> &middot; <code>native_level</code> &middot; <code>party_size</code> &middot; <code>sessions</code> &middot; <code>tone</code><br><b><code>shareable</code> is a machine-checkable field, not a note.</b> It exists because a derived module was published to a public repository once by mistake.</td>
-          <td><a href="source/modules-README.md" class="dust">schema</a><br><span class="sz">1 module, unpublished</span></td></tr>
-
-        <tr><td><b>Module element</b></td>
-          <td><code>name</code> &middot; <code>type</code> &middot; <code>module</code> &middot; <code>summary</code> &middot; <code>description</code> &middot; <code>function</code> &middot; <code>rules</code> &middot; <code>constraints</code><br><b><code>function</code> separates what a thing <em>is</em> from what it is <em>for</em></b>, so the DM can substitute it when the party does something unplanned.</td>
-          <td><a href="source/modules-README.md" class="dust">schema</a><br><span class="sz">derived &mdash; never ships</span></td></tr>
-
-        <tr><td><b>Campaign candidate</b></td>
-          <td><code>source</code> &middot; <code>url</code> &middot; <code>system</code> &middot; <code>levels</code> &middot; <code>length</code> &middot; <code>licence</code> &middot; <code>redistributable</code> &middot; <code>verified</code> &middot; <code>usable_for_play</code><br><b><code>verified</code> is separate from <code>licence</code></b> &mdash; one records what the source claims, the other records whether anyone checked.</td>
-          <td><a href="schemas/campaigns.md" class="dust">schema</a><br><span class="sz">6 candidates</span></td></tr>
-
-        <tr><td><b>Persona</b><br><span class="sz">the DM itself</span></td>
-          <td>Identity &middot; <b>seven dials</b> &middot; triggered moves &middot; <b>a falsifiable prediction</b> &middot; who it is wrong for.<br>The boundary test for what belongs: <em>if a great DM could sit at either end and still be great, it is a dial; otherwise it is a founding trait.</em> The prediction is a sentence about the DM <b>a player who never read the file could check.</b></td>
-          <td><a href="source/persona-format.md" class="dust">schema</a><br><span class="sz">⚠️ no instance on disk</span></td></tr>
-
-        <tr><td><b>DM module</b><br><span class="sz">a behaviour</span></td>
-          <td><code>module</code> &middot; <code>version</code> &middot; <code>title</code> &middot; <code>summary</code> &middot; <b><code>trigger</code></b> &middot; <code>auto</code> &middot; <code>updated</code> &middot; <code>canonical</code><br><b>The move carries its own trigger.</b> This solves &ldquo;anything that happens at a moment needs a named dispatcher&rdquo; by putting the condition on the behaviour instead of in a router.</td>
-          <td><span class="sz">1 module</span></td></tr>
-      </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LAYER 3 ============ -->
-  <section class="band">
-    <div class="wrap">
-      <div class="eyebrow">Layer 3 &mdash; Runtime state</div>
-      <h2 class="layers-title">What a running game writes down.</h2>
-      <p class="text-4 pt-lede">Two of these are JSON Lines rather than markdown, because they are appended to during play and validated by a script. <b>Everything in this layer is per-campaign and none of it ships.</b></p>
-
-      <div class="tbl-scroll">
-      <table class="ftbl">
-        <tr><th style="width:20%">File</th><th>Shape</th><th style="width:16%">Spec</th></tr>
-        <tr><td><b><code>ledger.jsonl</code></b></td>
-          <td><b>Records inputs, not conclusions.</b> An entry carries <code>roll</code> and <code>mods</code> so <code>total</code> is <em>derivable</em> — and since 28 August, a verdict must match its own arithmetic. Append-only; late entries are written out of order with a note rather than reordered.</td>
-          <td><a href="source/state-formats.md" class="dust">&sect;2</a></td></tr>
-        <tr><td><b><code>facts.jsonl</code></b></td>
-          <td><b>Three operations &mdash; <code>flip</code>, <code>establish</code>, <code>believe</code></b> &mdash; over four visibility values. <code>true</code> and <code>false</code> are DM-side; the player vocabulary is <code>known</code> and <code>suspected</code> only, so <b>a false belief sits among true ones looking identical.</b></td>
-          <td><a href="source/state-formats.md" class="dust">&sect;5</a></td></tr>
-        <tr><td><b><code>party.md</code></b></td>
-          <td>Who is here, where, current status and outcome, initiative, foes, beats.</td>
-          <td><a href="source/state-formats.md" class="dust">&sect;4</a></td></tr>
-        <tr><td><b><code>fronts.md</code></b></td>
-          <td>What factions want and are doing, each with a clock that advances <b>while the party is elsewhere.</b> Agendas, never plot.</td>
-          <td><a href="source/architecture.md" class="dust">&sect;6</a></td></tr>
-        <tr><td><b><code>ideas.md</code></b></td>
-          <td>Uncommitted possibilities. <b>Not canon, not true yet</b>, deleted on promotion so nothing gets introduced twice.</td>
-          <td><a href="source/campaign-start.md" class="dust">campaign-start</a></td></tr>
-        <tr><td><b><code>secrets.md</code></b></td>
-          <td>Per-character, DM-side. <b>Never rendered to any panel</b>, by the global rule on <a href="table.html" class="dust">The Table</a>.</td>
-          <td><a href="source/npc-containers.md" class="dust">npc-containers</a></td></tr>
-        <tr><td><b>Canon containers</b></td>
-          <td>Characters, locations, antagonists. <b>Link-only and empty at t=0 by design</b> &mdash; people accrete on contact rather than being populated in advance.</td>
-          <td><a href="schemas/canon-containers.md" class="dust">schema</a> &middot; <a href="source/npc-containers.md" class="dust">detail</a></td></tr>
-      </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ GAPS ============ -->
-  <section class="band">
-    <div class="wrap">
-      <div class="eyebrow">Two known gaps</div>
-      <h2 class="layers-title">Both were found while writing this page.</h2>
-      <div class="nope">
-        <p class="text-4" style="margin:0"><b>There is no persona instance on disk.</b> <code>persona-format.md</code> is the format, and it is real. But the only actual persona in the tree is an archived v1, and <b>the site describes the dungeon master as &ldquo;a swappable file&rdquo; on the strength of a format rather than a file.</b> Filed as SRN-54. Until it lands, that claim is a statement about the schema, not a demonstration.</p>
-      </div>
-      <div class="nope">
-        <p class="text-4" style="margin:0"><b><code>scene.md</code> is specified and does not exist where it is needed.</b> <a href="table.html" class="dust">The Table</a>&rsquo;s Now panel reads it. It exists in the documented example and in all three probe runs &mdash; <b>and in neither live campaign directory</b>, which have only <code>party.md</code>, <code>ledger.jsonl</code> and <code>facts.jsonl</code>. Filed as SRN-53. Either the play-test path skipped it or the spec should read <code>party.md</code>; that gets decided before the renderer is built against it.</p>
-      </div>
-      <p class="text-4 pt-lede" style="margin-top:26px">Both are on this page for the same reason the lost dice rolls are on <a href="playtest.html" class="dust">The Playtest</a>. <b>An inventory that only lists the parts that line up is a brochure.</b></p>
-    </div>
-  </section>
-
-  <footer class="row-5">
-    <div class="row-3">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="block">
-        <circle cx="12" cy="12" r="10.5" stroke="rgba(232,225,214,.2)" stroke-width="1"></circle>
-        <circle cx="12" cy="12" r="6.6" stroke="#b07a4e" stroke-width="1" stroke-dasharray="2.4 3.4"></circle>
-        <circle cx="12" cy="12" r="2.5" fill="#b07a4e"></circle>
-      </svg>
-      <span class="meta-4">Seren&nbsp;AI</span>
-    </div>
-    <div class="label">14 schemas &middot; 3 layers &middot; 2 known gaps &middot; counted 28 Aug 2026</div>
-  </footer>
-
-</div>
+  <script>location.replace("https://seren-dm.lovable.app/source-schemas.html");</script>
 </body>
 </html>
