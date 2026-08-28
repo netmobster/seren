@@ -1649,3 +1649,115 @@ body {
   .site-header nav a:not(.nav-cta) { display:none; }
 }
 
+
+/* ==========================================================================
+   NAV BUTTONS — four pages, no in-page anchors. Added 2026-08-27.
+   ========================================================================== */
+.nav-btn {
+  display:inline-block;
+  padding:9px 16px;
+  border:1px solid rgba(232,225,214,.24);
+  border-radius:2px;
+  color:var(--dust);
+  letter-spacing:.16em;
+  white-space:nowrap;
+  transition:border-color .15s, color .15s, background .15s;
+}
+.nav-btn:hover { border-color:var(--copper); color:var(--bone); }
+.nav-btn:focus-visible { outline:2px solid var(--copper); outline-offset:2px; }
+.nav-btn.is-here { color:var(--bone); border-color:var(--copper); }
+.nav-btn-key { color:var(--bone); border-color:var(--copper); }
+.nav-btn-key:hover { background:var(--copper); color:var(--ink); }
+@media (max-width:860px) {
+  .site-header { flex-wrap:wrap; gap:14px; padding:14px 20px; }
+  .page-meta-2 { gap:8px; flex-wrap:wrap; }
+  .nav-btn { padding:8px 11px; font-size:10px; letter-spacing:.12em; }
+}
+
+/* ==========================================================================
+   THE PLAYTEST PAGE — a record, not a pitch. Added 2026-08-27.
+   Copper = accent. Verdigris = it held. Oxblood = it failed or was lost.
+   ========================================================================== */
+:root { --oxblood:#a8574b; --oxblood-hi:#c26b5d; }
+
+.pt-nums { display:flex; flex-wrap:wrap; gap:44px; margin-top:40px; }
+.pt-num b {
+  display:block; font-family:var(--mono); font-size:34px; font-weight:700;
+  color:var(--bone); line-height:1; font-variant-numeric:tabular-nums;
+}
+.pt-num span {
+  display:block; margin-top:8px; font-family:var(--mono); font-size:10px;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--dust);
+}
+
+.pt-lede { max-width:64ch; }
+.pt-scene { max-width:70ch; }
+.pt-scene p { font-family:var(--serif); font-size:17px; line-height:1.72; color:var(--bone); margin:0 0 20px; }
+.pt-scene p.said { color:var(--dust); }
+.pt-said {
+  margin:0 0 22px; padding:2px 0 2px 20px; border-left:2px solid var(--copper);
+  font-family:var(--serif); font-size:17px; line-height:1.66; color:var(--bone);
+}
+.pt-said cite { display:block; margin-top:8px; font-family:var(--mono); font-size:10px;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--dust); font-style:normal; }
+
+/* a roll, shown as it happened */
+.pt-roll {
+  margin:26px 0; border:1px solid var(--edge); border-radius:2px; overflow:hidden;
+  font-family:var(--mono); font-size:12.5px;
+}
+.pt-roll-top {
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 16px;
+  padding:12px 16px; background:rgba(232,225,214,.035);
+  border-bottom:1px solid var(--hair); color:var(--dust);
+  letter-spacing:.06em;
+}
+.pt-roll-top b { color:var(--bone); font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:11px; }
+.pt-roll-math { color:var(--bone); font-variant-numeric:tabular-nums; }
+.pt-roll-out { margin-left:auto; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:11px; }
+.pt-pass { color:var(--verdigris-hi); }
+.pt-fail { color:var(--oxblood-hi); }
+.pt-roll-note { padding:12px 16px; color:var(--dust); line-height:1.66; font-size:12px; }
+.pt-roll-note em { color:var(--dust-hi); font-style:italic; }
+
+/* raw ledger */
+.pt-json {
+  margin:0; padding:14px 16px; overflow-x:auto; background:rgba(0,0,0,.28);
+  border:1px solid var(--hair); border-radius:2px;
+  font-family:var(--mono); font-size:11.5px; line-height:1.7; color:var(--dust-hi);
+  white-space:pre-wrap; word-break:break-word;
+}
+.pt-json .k { color:var(--copper-hi); }
+.pt-json .s { color:var(--verdigris-hi); }
+
+/* the batch exhibit */
+.pt-batch {
+  border:1px solid var(--copper); border-radius:2px; padding:30px;
+  background:rgba(176,122,78,.05);
+}
+.pt-dice { display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 6px; }
+.pt-die {
+  width:52px; height:52px; display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--edge); border-radius:2px; font-family:var(--mono);
+  font-size:19px; font-weight:700; color:var(--dust); font-variant-numeric:tabular-nums;
+}
+.pt-die.used { color:var(--bone); border-color:var(--copper); background:rgba(176,122,78,.12); }
+.pt-die-n { font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--dust); }
+
+/* the failure block */
+.pt-broke {
+  border:1px solid var(--oxblood); border-radius:2px; padding:30px;
+  background:rgba(168,87,75,.06);
+}
+.pt-broke .eyebrow { color:var(--oxblood-hi); }
+
+table.pt-tbl { width:100%; border-collapse:collapse; font-family:var(--mono); font-size:12px; margin-top:20px; }
+table.pt-tbl th {
+  text-align:left; padding:9px 12px 9px 0; border-bottom:1px solid var(--edge);
+  font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--dust); font-weight:400;
+}
+table.pt-tbl td { padding:11px 12px 11px 0; border-bottom:1px solid var(--hair); color:var(--dust-hi); vertical-align:top; }
+table.pt-tbl td b { color:var(--bone); }
+
+.pt-two { display:grid; gap:28px; }
+@media (min-width:900px) { .pt-two { grid-template-columns:1fr 1fr; } }
