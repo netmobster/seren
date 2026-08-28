@@ -51,11 +51,12 @@
       <p class="page-text-3 pt-lede" style="margin-top:14px">This is not published out of virtue. <b>Anyone can copy a schema in an afternoon</b> &mdash; the <code style="font-family:var(--mono)">believe</code>/<code style="font-family:var(--mono)">truth</code> pattern is a dozen lines. What is harder to copy is a session where the schema caught something, and harder still is the habit of publishing the session where it did not.</p>
 
       <div class="pt-nums">
-        <div class="pt-num"><b>30,678</b><span>lines, ours</span></div>
+        <div class="pt-num"><b>30,742</b><span>lines, ours</span></div>
         <div class="pt-num"><b>617</b><span>rules articles</span></div>
         <div class="pt-num"><b>1</b><span>python file</span></div>
-        <div class="pt-num"><b>518</b><span>lines of it</span></div>
+        <div class="pt-num"><b>556</b><span>lines of it</span></div>
       </div>
+      <p class="label" style="margin-top:14px;opacity:.75">Counted 28 August 2026. These move; the files are the record, not this box.</p>
     </div>
   </section>
 
@@ -77,7 +78,7 @@
       <div class="pt-two" style="margin-top:34px">
         <div class="how-card">
           <span class="label-wide">1 &mdash; It refuses</span>
-          <p class="text-4" style="margin-top:14px"><a href="source/gate.py" class="dust"><b>gate.py</b></a>, 518 lines, standard library only. It validates every entry before it is written and <b>rejects the ones that do not add up</b>. It knows nothing about D&amp;D &mdash; it cannot tell you whether a ruling was fair. It knows that a d20 stops at twenty and that addition is not optional.</p>
+          <p class="text-4" style="margin-top:14px"><a href="source/gate.py" class="dust"><b>gate.py</b></a>, 556 lines, standard library only. It validates every entry before it is written and <b>rejects the ones that do not add up</b>. It knows nothing about D&amp;D &mdash; it cannot tell you whether a ruling was fair. It knows that a d20 stops at twenty and that addition is not optional.</p>
           <p class="text-4" style="margin-top:14px">Its <code style="font-family:var(--mono)">roll</code> command produces the dice and the ledger line in one operation, so <b>an unlogged roll is an unrolled roll</b>. That exists because the first played session lost two rolls to a narrate-then-log habit, and an instruction to remember is not a control.</p>
         </div>
         <div class="how-card">
@@ -138,7 +139,8 @@
       <table class="pt-tbl" style="max-width:none">
         <tr><th style="width:46%">The claim</th><th>The file that settles it</th></tr>
         <tr><td><b>&ldquo;It lost two rolls and says so.&rdquo;</b></td><td><a href="evidence/ledger.jsonl" class="dust">ledger.jsonl</a> &mdash; entries <code style="font-family:var(--mono)">e017</code> and <code style="font-family:var(--mono)">e018</code>, appended out of order with notes recording their own lateness</td></tr>
-        <tr><td><b>&ldquo;Nothing was softened.&rdquo;</b></td><td><a href="source/gate.py" class="dust">gate.py</a> + <a href="evidence/ledger.jsonl" class="dust">ledger.jsonl</a> &mdash; run <code style="font-family:var(--mono)">check</code> and every total rebuilds from its own die and modifiers</td></tr>
+        <tr><td><b>&ldquo;No recorded result contradicts its own inputs.&rdquo;</b></td><td><a href="source/gate.py" class="dust">gate.py</a> + <a href="evidence/ledger.jsonl" class="dust">ledger.jsonl</a> &mdash; run <code style="font-family:var(--mono)">check</code>: every total rebuilds from its own die and modifiers, and every verdict matches its total against its own DC</td></tr>
+        <tr><td><b>&ldquo;&hellip;so nothing was softened.&rdquo;</b></td><td><b>That does not follow, and no file on this page closes the gap.</b> <b>The dungeon master sets the DC.</b> A total of 7 against a DC quietly set at 5 is honest arithmetic and a softened scene, and the ledger cannot tell the difference. What <code style="font-family:var(--mono)">check</code> rules out is a result that contradicts its own numbers &mdash; never a number chosen to be kind</td></tr>
         <tr><td><b>&ldquo;The player was wrong about something and it was recorded.&rdquo;</b></td><td><a href="evidence/facts.jsonl" class="dust">facts.jsonl</a> &mdash; the two <code style="font-family:var(--mono)">believe</code> entries, both <code style="font-family:var(--mono)">truth: false</code></td></tr>
         <tr><td><b>&ldquo;The DM is bound by something written down.&rdquo;</b></td><td><a href="evidence/DM.md" class="dust">DM.md</a> &mdash; 276 lines, every clause marked earned or guessed</td></tr>
         <tr><td><b>&ldquo;It looks rules up instead of recalling them.&rdquo;</b></td><td><a href="source/library-README.md" class="dust">library/</a> and <a href="source/core.md" class="dust">core.md</a> &mdash; and <a href="source/fireball.md" class="dust">one of the 617 articles</a> to show the shape</td></tr>
@@ -257,7 +259,7 @@ python gate.py count ledger.jsonl   <span class="k">&rarr;</span> <span class="s
       </svg>
       <span class="meta-4">Seren&nbsp;AI</span>
     </div>
-    <div class="label">30,678 lines · 617 articles · one script</div>
+    <div class="label">30,742 lines · 617 articles · one script · counted 28 Aug 2026</div>
   </footer>
 
 </div>
