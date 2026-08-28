@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://netmobster.github.io/seren/sitemap.xml
