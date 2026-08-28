@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/seren/">
+  <link rel="canonical" href="https://netmobster.github.io/seren/table.html">
+  <title>SEREN AI &mdash; The Table</title>
+  <meta name="description" content="A panel beside the chat that holds what the player would otherwise have to ask for. It is a fog-of-war spec wearing a UI spec's clothes.">
+  <meta name="theme-color" content="#100d0b">
+  <meta property="og:title" content="SEREN AI &mdash; The Table">
+  <meta property="og:description" content="A panel beside the chat that holds what the player would otherwise have to ask for. It is a fog-of-war spec wearing a UI spec's clothes.">
+  <meta property="og:url" content="https://netmobster.github.io/seren/table.html">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&family=IBM+Plex+Serif:wght@300;700&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="seren.css">
+  <style>
+    /* ===== THE TABLE (tb- namespace) ===== */
+    .tb-bleed{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+      background:rgba(0,0,0,.22);padding:34px 0 30px}
+    .tb-stage{max-width:1460px;margin:0 auto;padding:0 clamp(14px,3vw,30px)}
+    .tb-caps{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+      flex-wrap:wrap;margin-bottom:16px}
+    .tb-caps .tb-lab{font-family:var(--mono);font-size:10px;letter-spacing:.19em;
+      text-transform:uppercase;color:var(--copper-hi)}
+    .tb-caps a{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+      text-transform:uppercase;color:var(--dust);border-bottom:1px solid var(--edge)}
+    .tb-caps a:hover{color:var(--bone);border-color:var(--bone)}
+    .tb-frame{width:100%;height:1180px;border:1px solid var(--edge-soft);border-radius:4px;
+      background:#121319;display:block}
+    @media(max-width:1080px){.tb-frame{height:1500px}}
+    @media(max-width:620px){.tb-frame{height:1320px}}
+    .tb-note{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--dust);
+      margin-top:12px;line-height:1.7}
+
+    .tb-leak td:first-child{white-space:normal}
+    .tb-worst{color:var(--oxblood-hi,#c4756a)}
+    .tb-never{border:1px solid var(--edge);border-radius:2px;padding:24px 26px;margin-top:24px}
+    .tb-never ul{margin:14px 0 0;padding-left:20px}
+    .tb-never li{color:var(--dust);margin-bottom:9px;line-height:1.6}
+    .tb-never li b{color:var(--bone)}
+  </style>
+</head>
+<body>
+<div class="page-box">
+
+  <header class="site-header">
+    <div class="row-3">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="page-box-2">
+        <circle cx="12" cy="12" r="10.5" stroke="rgba(232,225,214,.22)" stroke-width="1"></circle>
+        <circle cx="12" cy="12" r="6.6" stroke="#b07a4e" stroke-width="1" stroke-dasharray="2.4 3.4"></circle>
+        <circle cx="12" cy="12" r="2.5" fill="#b07a4e"></circle>
+        <circle cx="18.6" cy="12" r="1.5" fill="#e8e1d6"></circle>
+      </svg>
+      <span class="page-meta">Seren&nbsp;AI</span>
+    </div>
+    <nav class="page-meta-2">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="backend.html" class="nav-btn">The backend</a>
+      <a href="table.html" class="nav-btn is-here">The table</a>
+      <a href="playtest.html" class="nav-btn">The playtest</a>
+      <a href="source.html" class="nav-btn">The source</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="index.html#contact" class="nav-btn nav-btn-key">Get in touch</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="page-box-6">
+    <div class="wrap">
+      <h1 class="page-title-3">The Table.</h1>
+      <p class="page-display-5">Your sheet in front of you, your notes at your elbow, the map in the middle, and everyone&rsquo;s dice where you can see them.</p>
+      <p class="page-text-3 pt-lede">That is the thing a solo player does not have, and it is the thing this supplies. <b>A panel beside the chat that holds what the player would otherwise have to stop and ask for</b> &mdash; combat state, the party, their character, where the story stands, what they actually know, the map, the rules, their own notes.</p>
+      <p class="page-text-3 pt-lede" style="margin-top:14px"><b>It is not an application.</b> Every panel is a <em>view</em> over a file the agent already owns &mdash; <code style="font-family:var(--mono)">party.md</code>, <code style="font-family:var(--mono)">scene.md</code>, <code style="font-family:var(--mono)">ledger.jsonl</code>, canon, the module, the character sheet. The dungeon master still reads markdown. <b>The panel is for the person at the table, not for the model.</b></p>
+
+      <div class="pt-batch" style="margin-top:26px">
+        <div class="label-wide">Where this actually stands</div>
+        <p class="text-4" style="margin-top:12px"><b>A Table ran in the played campaign, and it worked.</b> The dungeon master built one mid-session, unprompted, because the table needed one &mdash; and then used it for the rest of the game. <b>It is not final.</b> What you can click below is the full concept mockup, which is ahead of what has actually run: eight panels, real characters, real Sheep Chase content, static data. <b>Finalising it in code is filed and not yet done.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE DEMO ============ -->
+  <section class="tb-bleed">
+    <div class="tb-stage">
+      <div class="tb-caps">
+        <span class="tb-lab">Seren Table &middot; concept mockup &middot; tabs work</span>
+        <a href="table-demo.html" target="_blank" rel="noopener">Open full screen &nearr;</a>
+      </div>
+      <iframe class="tb-frame" src="table-demo.html" title="Seren Table — interactive concept mockup" loading="lazy"></iframe>
+      <p class="tb-note">Static data, real content. Ser&rsquo;en and the party are the actual sheets; the scene is A Wild Sheep Chase. The numbers are master-level because a level-5 party cannot be rendered until devolve is built &mdash; which is the same gap named on The Source, not a separate one.</p>
+    </div>
+  </section>
+
+  <!-- ============ THE RULE ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">The rule it earned</div>
+      <h2 class="layers-title">Every panel declares what it must not show.</h2>
+      <p class="text-4 pt-lede">This looks like an ergonomics document and it is not one. <b>It is a fog-of-war spec wearing a UI spec&rsquo;s clothes</b>, and it got deprioritised for months because it looked like the former.</p>
+      <p class="text-4 pt-lede" style="margin-top:18px">The reason is simple and unpleasant: <b>the agent can reach the dungeon master&rsquo;s layer.</b> A panel that displays whatever it can reach will eventually display something it should not. So the boundary cannot live in the data &mdash; <b>it has to be a property of the panel.</b></p>
+      <p class="text-4 pt-lede" style="margin-top:18px"><b>The first draft of the mockup leaked three times.</b> All three were caught in review by the person the panel was being built for, which is the strongest argument for the rule there is:</p>
+
+      <table class="pt-tbl tb-leak" style="max-width:none;margin-top:22px">
+        <tr><th style="width:32%">The leak</th><th>Why it was wrong</th></tr>
+        <tr><td><b>Companion <code style="font-family:var(--mono)">wants</code></b></td><td>Lives in <code style="font-family:var(--mono)">secrets.md</code>, which is DM-only. Showing <em>&ldquo;Arthryn wants not to be the one who gives the order&rdquo;</em> is putting the DM&rsquo;s notebook on screen. <b>What a player sees is what a companion has said and done.</b></td></tr>
+        <tr><td><b>The beat sheet as a quest log</b></td><td>The beat graph is the module&rsquo;s spine. Showing the player <code style="font-family:var(--mono)">the-bed-dragon</code> and <code style="font-family:var(--mono)">the-choice</code> before they happen <b>is showing them the plot.</b></td></tr>
+        <tr><td><b class="tb-worst">A visible <code style="font-family:var(--mono)">Believed</code> tag</b></td><td><b>The worst of the three.</b> If a player can see which of their beliefs is flagged as wrong, <b>the flag is the answer.</b> They discount anything wearing it on sight. The player-visible vocabulary is <code style="font-family:var(--mono)">known</code> and <code style="font-family:var(--mono)">suspected</code> only &mdash; <b>and a false belief has to sit among them looking exactly like a true one.</b> A tag that distinguishes them destroys the mechanism it was built to serve.</td></tr>
+      </table>
+
+      <div class="tb-never">
+        <div class="label-wide">Never on any panel, ever</div>
+        <ul>
+          <li><b>Front clocks and their positions.</b> They advance <em>while the party is elsewhere</em> &mdash; a clock is the DM&rsquo;s model of what the world is doing unobserved. Seeing it is seeing behind the screen.</li>
+          <li><b>The beat graph.</b></li>
+          <li><b><code style="font-family:var(--mono)">true</code> / <code style="font-family:var(--mono)">false</code> visibility tags.</b></li>
+          <li><b><code style="font-family:var(--mono)">wants</code>, secrets, forks.</b></li>
+          <li><b>Foe HP the party has no way to know.</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE SELF-CATCH ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">And then it leaked anyway</div>
+      <h2 class="layers-title">The first DM to build a live panel put a front clock on it, noticed within seconds, and said so unprompted.</h2>
+      <p class="text-4 pt-lede">Mid-session, building its own Table, it rendered Noke&rsquo;s clock &mdash; <code style="font-family:var(--mono)">[##--------]</code> &mdash; onto the <b>Now</b> panel. Then it caught itself and declared it, with nobody asking.</p>
+      <p class="text-4 pt-lede" style="margin-top:18px"><b>The ban already existed.</b> It was written on the <b>Quests</b> row: <em>the beat graph &middot; fronts &middot; clocks</em>. The leak happened on <b>Now</b>, whose rule read <em>&ldquo;anything from the DM layer&rdquo;</em> &mdash; true, correct, and <b>far too general to fire while you are building something at speed.</b></p>
+
+      <div class="pt-batch" style="margin-top:24px">
+        <p class="text-4" style="margin:0"><b>The rule says the boundary is a property of the panel. But <code style="font-family:var(--mono)">clocks</code> is a property of the data</b> &mdash; and it had been written on one panel&rsquo;s row. A leak that can surface anywhere has to be banned everywhere, <b>or the panel nobody wrote it on is the one that leaks.</b> That is why the list above is global.</p>
+      </div>
+
+      <p class="text-4 pt-lede" style="margin-top:24px">The self-catch is the system working rather than the system being clever. <a href="evidence/DM.md" class="dust">DM.md</a> &sect;7 says: <em>you realise you leaked, you say so, you do not retcon.</em> <b>That was the first time that clause has ever fired.</b></p>
+    </div>
+  </section>
+
+  <!-- ============ RECORD ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">The panel worth arguing for</div>
+      <h2 class="layers-title">The audit had no consumer. This is the consumer.</h2>
+      <p class="text-4 pt-lede">The whole integrity argument &mdash; every roll recorded with its inputs, every verdict checkable &mdash; had a hole in it that had nothing to do with the code: <b>nobody forensically checks whether their own game cheated them.</b> Not twice, anyway.</p>
+      <p class="text-4 pt-lede" style="margin-top:18px"><b>A panel showing every roll with its DC, visible while you play, turns an integrity claim into something you glance at.</b> The spec argued exactly this and then filed it inside <b>Now</b> as a line reading &ldquo;recent rolls with their DCs&rdquo;. <b>The live DM promoted it to its own tab within one scene.</b> We wrote the argument for the panel and did not give it the panel.</p>
+      <p class="text-4 pt-lede" style="margin-top:18px">What the ledger can and cannot prove is set out on <a href="source.html" class="dust">The Source</a>, including the part it cannot: <b>the dungeon master sets the DC</b>, and a number chosen to be kind looks identical to an honest one.</p>
+    </div>
+  </section>
+
+  <!-- ============ OPEN ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Still open</div>
+      <h2 class="layers-title">What is not decided.</h2>
+      <p class="text-4 pt-lede"><b>Live or static.</b> A static render is cheap and honest. A live-updating panel needs a runtime capability nobody has checked. <b>Does the panel ever write?</b> Notes obviously. Anything beyond that &mdash; marking a quest done, spending a slot &mdash; makes it an input surface, which is a different product. <b>Does the DM get a version</b>, same panels with the fog off? Probably, and it is not what makes this worth building. <b>Mobile</b> collapses the sidebar to a full-width sheet, and is untested.</p>
+      <p class="text-4 pt-lede" style="margin-top:18px">One more, and it is the honest one: <b>the panel list above has one vote.</b> A single live session kept four of the eight panels, ignored the rest, and invented three nobody specced &mdash; a record tab, a session-zero tab, and a rules-in-play tab. <b>That is requirement evidence, not proof.</b> It gets rebuilt against a second session before anyone acts on it.</p>
+    </div>
+  </section>
+
+  <footer class="row-5">
+    <div class="row-3">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="block">
+        <circle cx="12" cy="12" r="10.5" stroke="rgba(232,225,214,.2)" stroke-width="1"></circle>
+        <circle cx="12" cy="12" r="6.6" stroke="#b07a4e" stroke-width="1" stroke-dasharray="2.4 3.4"></circle>
+        <circle cx="12" cy="12" r="2.5" fill="#b07a4e"></circle>
+      </svg>
+      <span class="meta-4">Seren&nbsp;AI</span>
+    </div>
+    <div class="label">Eight panels &middot; one live build &middot; three leaks caught</div>
+  </footer>
+
+</div>
+</body>
+</html>
