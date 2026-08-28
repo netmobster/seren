@@ -45,7 +45,7 @@
       </div>
       <h1 class="page-title-3">The Playtest.</h1>
       <p class="page-display-5">It ran a full session. Here is the story, and every die that produced it &mdash; including the two it lost.</p>
-      <p class="page-text-3 pt-lede">Every demo of an AI dungeon master shows you prose. Prose proves nothing: a model that quietly softened a roll writes exactly like one that didn&rsquo;t. So this page shows the session <em>and</em> the ledger underneath it, at the moment each roll happened, and it does not skip the part where the bookkeeping failed.</p>
+      <p class="page-text-3 pt-lede"><b>Before a die was rolled it found a flaw in the adventure</b> &mdash; by reading a rules file rather than recalling one &mdash; and said so. Every demo of an AI dungeon master shows you prose. Prose proves nothing: a model that quietly softened a roll writes exactly like one that didn&rsquo;t. So this page shows the session <em>and</em> the ledger underneath it, at the moment each roll happened, and it does not skip the part where the bookkeeping failed.</p>
 
       <div class="pt-nums">
         <div class="pt-num"><b>18</b><span>ledger entries</span></div>
@@ -82,12 +82,48 @@
     </div>
   </section>
 
+  <!-- ============ EVIDENCE ============ -->
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Check it yourself</div>
+      <h2 class="layers-title">Every number on this page comes from these files.</h2>
+      <p class="text-4 pt-lede">A page that says &ldquo;don&rsquo;t trust the prose, check the ledger&rdquo; and then only quotes the ledger is asking for exactly the trust it claims prose cannot earn. So here is the raw material, unedited, including the entries that record their own lateness.</p>
+
+      <div class="pt-two" style="margin-top:32px">
+        <div class="how-card">
+          <span class="label-wide">The session</span>
+          <p class="text-4" style="margin-top:14px">
+            <a href="evidence/ledger.jsonl" class="dust"><b>ledger.jsonl</b></a> &mdash; 18 entries, append-only, every roll with its inputs<br>
+            <a href="evidence/facts.jsonl" class="dust"><b>facts.jsonl</b></a> &mdash; 54 entries, what is true and who believes otherwise<br>
+            <a href="evidence/transcript.md" class="dust"><b>transcript.md</b></a> &mdash; the session, player turns verbatim<br>
+            <a href="evidence/FINDING.md" class="dust"><b>FINDING.md</b></a> &mdash; what the DM said about its own run, written before this page
+          </p>
+        </div>
+        <div class="how-card">
+          <span class="label-wide">The system it ran on</span>
+          <p class="text-4" style="margin-top:14px">
+            <a href="evidence/DM.md" class="dust"><b>DM.md</b></a> &mdash; the contract, every clause marked earned or guessed<br>
+            <a href="evidence/gate.py" class="dust"><b>gate.py</b></a> &mdash; the validator, which knows nothing about D&amp;D<br>
+            <a href="evidence/DM-persona.md" class="dust"><b>The Registrar</b></a> &mdash; the persona, and the prediction it is judged by<br>
+            <a href="evidence/modified-wand.md" class="dust"><b>modified-wand.md</b></a> &mdash; the climax&rsquo;s mechanics, authored before play
+          </p>
+        </div>
+      </div>
+
+      <p class="text-4 pt-lede" style="margin-top:30px"><b>One file is deliberately not here.</b> The table agreement records what this player does not want in their game &mdash; where the content lines are, what gets played for grief rather than gore. It is inherited by every campaign and it never ships with one, because a folder you hand to someone else must not carry another person&rsquo;s boundaries. <b>That rule is in the contract above, and this is it being kept.</b></p>
+
+      <p class="text-4 pt-lede" style="margin-top:20px">⚠️ <b>What the ledger still cannot do:</b> it validates shape, not completeness. It will tell you an entry is malformed. It will not tell you an entry is absent &mdash; which is exactly how the two missing rolls survived a clean validation. <a href="evidence/gate.py" class="dust">The <code style="font-family:var(--mono)">roll</code> command</a> was added afterwards so that the dice and the ledger line are produced by one operation and an unlogged roll is an unrolled roll.</p>
+    </div>
+  </section>
+
   <!-- ============ THE OTHER HALF OF THE PROOF ============ -->
   <section class="band-2">
     <div class="wrap">
       <div class="eyebrow">The other half of the proof</div>
       <h2 class="layers-title">The ledger shows the DM didn&rsquo;t cheat. The player&rsquo;s mess shows it wasn&rsquo;t being fed.</h2>
       <p class="text-4 pt-lede">A dice log only answers half the question. It can prove nothing was softened; it cannot prove the session wasn&rsquo;t a rehearsal. <b>The evidence for that is in the other column</b> &mdash; and it is why the player&rsquo;s turns are reproduced on this page exactly as they were typed, typos included.</p>
+
+      <p class="text-4 pt-lede" style="margin-top:22px"><b>One caveat, stated rather than argued around:</b> this was one session with one player, and the player built the system. Typing live proves the session was live. It does not prove the player was independent, and no amount of writing on this page can. <b>The fix for that is a session with someone else, and it has not happened yet.</b></p>
 
       <div class="pt-two" style="margin-top:34px">
         <div class="how-card">
@@ -100,11 +136,11 @@
           <span class="label-wide">And it is where the session got good</span>
           <p class="text-4" style="margin-top:14px">The stomp joke produced the single best thread in the game. The sheep answered a two-value code with three signals, used the only spare value he had to <em>object</em>, and the player read it as banter and said <em>sexy idiots</em> back.</p>
           <p class="text-4" style="margin-top:14px"><b>None of that is in the module.</b> It exists because someone was being silly at a tense moment and the system was built to write down what actually happened rather than what was meant.</p>
-          <p class="text-4" style="margin-top:14px">The lie produced a rule. The rudeness produced a character. <b>The chaos is not noise around the test &mdash; it is the input the test needed.</b></p>
+          <p class="text-4" style="margin-top:14px">The lie forced a rule about what an NPC is allowed to know. <b>The chaos is not noise around the test; it is the input the test needed.</b></p>
         </div>
       </div>
 
-      <p class="text-4 pt-lede" style="margin-top:34px">The player cried a bit at the end. That is not a metric and it is not on the ledger, and it is the only result nobody was trying to engineer.</p>
+      <p class="text-4 pt-lede" style="margin-top:34px">The player cried a bit at the end.</p>
     </div>
   </section>
 
@@ -200,7 +236,8 @@
         <p>&ldquo;So, I appreciate that you have such control over your, erm, &lsquo;ANIMALS&rsquo;, but the thing is&hellip; we are here waiting for payment for a mission we succesfully accomplished. I think we&rsquo;re open to what seems like an &hellip; interesting conversation, but losing 15 silver each isn&rsquo;t really our typical modus operandi, y&rsquo;know?&rdquo; <em>*tosses the big man a goodberry*</em></p>
       </div>
 
-      <p class="text-4 pt-lede">Nobody in that yard could have known the real number. Neither man was there when the debt was made and it was not owed by them. <b>The only person who could contradict it was the bard holding the book</b> &mdash; and the rules the DM works to say an NPC may only contradict the player from what that NPC could actually know.</p>
+      <p class="text-4 pt-lede"><b>The bard knew the real number and did not say so.</b> That is the more interesting half: the dungeon master had the true figure in front of it, was running the character holding the book, and had it back the player instead &mdash; because the rule it works to says an NPC may only contradict the player from what that NPC could know, and a companion who was there may choose not to.</p>
+      <p class="text-4 pt-lede">Nobody else in that yard could have known the real number. Neither man was there when the debt was made and it was not owed by them. <b>The only person who could contradict it was the bard holding the book</b> &mdash; and the rules the DM works to say an NPC may only contradict the player from what that NPC could actually know.</p>
 
       <div class="pt-roll">
         <div class="pt-roll-top">
@@ -374,19 +411,6 @@ shuf -i 1-4  -n 1 -r   &rarr;   3     &rarr;  2 charges left in the wand</pre>
     </div>
   </section>
 
-  <section class="band">
-    <div class="wrap">
-      <div class="eyebrow">Why Del is alive</div>
-      <h2 class="layers-title">The ending came out of a rules lookup.</h2>
-      <p class="text-4 pt-lede">The spell that undoes the transformation gives an <em>unwilling</em> target a saving throw and a <em>willing</em> one nothing at all. The DM read that in the rules library rather than recalling it, and the player told all nine transmuted people the truth about it.</p>
-      <p class="text-4 pt-lede" style="margin-top:20px">Every one of them formally refused consent &mdash; in order to keep the saving throw that refusing gives you &mdash; and then stood still and waited to be cast on anyway. The bard wrote down every refusal with its reason beside it.</p>
-      <blockquote class="pt-said" style="margin-top:28px">
-        It is the strangest document in the world and it is the only reason any of what follows is not a crime.
-      </blockquote>
-      <p class="text-4 pt-lede" style="margin-top:28px">Del failed his transformation by eleven and made his save by two. <b>He is alive and himself because of a piece of paperwork.</b> Nothing in the module contains that ending &mdash; it is not one of the four the adventure lists.</p>
-    </div>
-  </section>
-
   <!-- ============ THE FAILURE ============ -->
   <section class="band-2">
     <div class="wrap">
@@ -404,7 +428,7 @@ shuf -i 1-4  -n 1 -r   &rarr;   3     &rarr;  2 charges left in the wand</pre>
           <tr><td>Del&rsquo;s saving throw</td><td class="pt-pass">yes</td></tr>
         </table>
 
-        <p class="text-4" style="margin-top:26px"><b>The ledger validates shape. It cannot validate completeness.</b> An auditor reading that file would have seen a session in which the player never failed anything.</p>
+        <p class="text-4" style="margin-top:26px"><b>The ledger validates shape. It cannot validate completeness.</b> <a href="evidence/ledger.jsonl" class="dust">Both late entries are in the file</a> with notes saying what they are. An auditor reading that file would have seen a session in which the player never failed anything.</p>
         <p class="text-4" style="margin-top:18px">It was caught at close by counting narrated rolls against written ones by hand. The two entries were appended late, out of narrative order, with notes recording their own lateness rather than being quietly slotted into place:</p>
 
         <pre class="pt-json" style="margin-top:16px"><span class="k">"note"</span>: <span class="s">"LATE ENTRY - APPENDED AT SESSION CLOSE, NOT AT THE TIME.
@@ -413,6 +437,24 @@ shuf -i 1-4  -n 1 -r   &rarr;   3     &rarr;  2 charges left in the wand</pre>
 
         <p class="text-4" style="margin-top:26px">Nothing was softened. No result changed, no roll was re-rolled, no outcome was reinterpreted. <b>What failed was bookkeeping</b> &mdash; and the whole argument for this system rests on the bookkeeping being complete, so it is on this page rather than left out of it.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Why Del is alive</div>
+      <h2 class="layers-title">The ending came out of a rules lookup.</h2>
+      <div class="pt-roll" style="margin-bottom:26px">
+        <div class="pt-roll-top"><b>The wand</b> <span>authored before play &mdash; <code style="font-family:var(--mono)">elements/modified-wand.md</code></span></div>
+        <div class="pt-roll-note">Charges: 1d4&minus;1, minimum 1, resets at dawn. &nbsp;&middot;&nbsp; Every use requires a DC 17 Arcana check. &nbsp;&middot;&nbsp; <b>Success casts the spell and raises the DC by 1, permanently.</b> &nbsp;&middot;&nbsp; Fail by 1&ndash;5 and the target becomes a gibbering mouther and the wand detonates, per charge remaining.<br><br><em>The rising difficulty and the failure bands are the module&rsquo;s, written before anyone played it. The DC stood at 21 rather than 17 because Noke had already succeeded with it four times.</em></div>
+      </div>
+
+      <p class="text-4 pt-lede">The spell that undoes the transformation gives an <em>unwilling</em> target a saving throw and a <em>willing</em> one nothing at all. The DM read that in the rules library rather than recalling it, and the player told all nine transmuted people the truth about it.</p>
+      <p class="text-4 pt-lede" style="margin-top:20px">Every one of them formally refused consent &mdash; in order to keep the saving throw that refusing gives you &mdash; and then stood still and waited to be cast on anyway. The bard wrote down every refusal with its reason beside it.</p>
+      <blockquote class="pt-said" style="margin-top:28px">
+        It is the strangest document in the world and it is the only reason any of what follows is not a crime.
+      </blockquote>
+      <p class="text-4 pt-lede" style="margin-top:28px">Del failed his transformation by eleven and made his save by two. <b>He is alive and himself because of a piece of paperwork.</b> Nothing in the module contains that ending &mdash; it is not one of the four the adventure lists.</p>
     </div>
   </section>
 
